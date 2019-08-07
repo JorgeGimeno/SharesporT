@@ -56,7 +56,7 @@ CREATE TABLE `st_usuarios` (
   `nombre` varchar(100) DEFAULT NULL,
   `apellidos` varchar(100) DEFAULT NULL,
   `ciudad` varchar(100) DEFAULT NULL,
-  `foto` varchar(100) DEFAULT NULL,
+  `foto` blob DEFAULT NULL,
   `fecha_nac` date DEFAULT NULL,
   `estado` varchar(50) DEFAULT NULL,
   `permisos` varchar(50) DEFAULT NULL,
