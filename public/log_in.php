@@ -7,7 +7,12 @@ require_once('header.php');
   <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Iniciar Sesion</a></a>
+        <label>Inicio de sesion</label>
+        <input type="text" class="form-control " placeholder="Nombre de usuario" 
+                    aria-label="Nombre de usuario" aria-describedby="basic-addon1">
+        <input type="text" class="form-control mt-2" placeholder="Contraseña" 
+                    aria-label="Contraseña" aria-describedby="basic-addon1">
+        <button class="btn btn-primary btn-xl rounded-pill mt-5">Iniciar Sesion</button>
       </div>
     </div>
   </header>
