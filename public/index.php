@@ -5,17 +5,28 @@ require_once('header.php');
 ?>
 
   <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <h1 class="masthead-heading mb-0">One Page Wonder</h1>
-        <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
-        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Learn More</a>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="d-block w-100" src="../Resources/PlantillaInicio/img/04.jpg" alt="First slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../Resources/PlantillaInicio/img/05.jpg" alt="Second slide">
+      </div>
+      <div class="carousel-item">
+        <img class="d-block w-100" src="../Resources/PlantillaInicio/img/06.jpg" alt="Third slide">
       </div>
     </div>
-    <div class="bg-circle-1 bg-circle"></div>
-    <div class="bg-circle-2 bg-circle"></div>
-    <div class="bg-circle-3 bg-circle"></div>
-    <div class="bg-circle-4 bg-circle"></div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+    
   </header>
 
   <section>
@@ -23,7 +34,7 @@ require_once('header.php');
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/01.jpg" alt="">
+            <img class="img-fluid rounded-circle" src="../Resources/PlantillaInicio/img/07.jpg" alt="">
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
@@ -41,7 +52,7 @@ require_once('header.php');
       <div class="row align-items-center">
         <div class="col-lg-6">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/02.jpg" alt="">
+            <img class="img-fluid rounded-circle" src="../Resources/PlantillaInicio/img/08.jpg" alt="">
           </div>
         </div>
         <div class="col-lg-6">
@@ -59,7 +70,7 @@ require_once('header.php');
       <div class="row align-items-center">
         <div class="col-lg-6 order-lg-2">
           <div class="p-5">
-            <img class="img-fluid rounded-circle" src="img/03.jpg" alt="">
+            <img class="img-fluid rounded-circle" src="../Resources/PlantillaInicio/img/09.jpg" alt="">
           </div>
         </div>
         <div class="col-lg-6 order-lg-1">
