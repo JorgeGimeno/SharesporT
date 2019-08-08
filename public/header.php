@@ -5,10 +5,10 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="SharesporT, red social para deportistas">
+  <meta name="author" content="SharesporT">
 
-  <title>One Page Wonder - Start Bootstrap Template</title>
+  <title>SharesporT, red social para deportistas</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,17 +27,23 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.php">Start Bootstrap</a>
+
+      <a class="navbar-brand" href="index.php"><img class="img-fluid" src="../resources/sharesport_logo.jpg" width="100" height=30/></a>
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link" href="registro.php">Sign Up</a>
+=======
+            <a class="nav-link" href="registro.php">Registro</a>
+>>>>>>> 63394d5bb67a83ef30bafb7732b1f1efd70f4899
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="log_in.php">Log In</a>
+            <a class="nav-link" href="log_in.php">Acceso Usuarios</a>
           </li>
         </ul>
       </div>
