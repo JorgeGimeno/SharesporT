@@ -3,7 +3,7 @@
 require_once('header.php');
 
 ?>
-
+<main class="index">
   <header class="masthead text-center text-white">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -82,7 +82,7 @@ require_once('header.php');
       </div>
     </div>
   </section>
-
+</main>
 <?php
     require_once('footer.php');
     require_once('scripts.php');
