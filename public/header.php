@@ -36,11 +36,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-<<<<<<< HEAD
-            <a class="nav-link" href="registro.php">Sign Up</a>
-=======
             <a class="nav-link" href="registro.php">Registro</a>
->>>>>>> 63394d5bb67a83ef30bafb7732b1f1efd70f4899
           </li>
           <li class="nav-item">
             <a class="nav-link" href="log_in.php">Acceso Usuarios</a>
