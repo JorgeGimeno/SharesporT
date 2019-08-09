@@ -30,6 +30,11 @@
 
       <a class="navbar-brand" href="index.php"><img class="img-fluid" src="../resources/sharesport_logo.jpg" width="100" height=30/></a>
 
+      
+          <img class="icono-login img-fluid rounded-circle" src="../public/img/User.png" style="width:61px; position:absolute; right:5%;" alt="">
+        
+
+
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
