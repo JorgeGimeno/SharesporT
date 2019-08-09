@@ -25,7 +25,7 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
     <div class="container">
 
       <a class="navbar-brand" href="index.php"><img class="img-fluid" src="../resources/sharesport_logo.jpg" width="100" height=30/></a>

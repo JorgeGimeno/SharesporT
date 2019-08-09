@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
-                    <img class="img-fluid" src="img/img-registro.jpg" alt="">
+                    <img class="img-fluid" src="img/img-registro-3.jpg" alt="">
                 </div>
                 <div class="col-md-4">
                     <form>
@@ -45,16 +45,18 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="form-check">
-                                <input class="form-check-input sr-only" type="checkbox" id="gridCheck">
-                                <label class="form-check-label sr-only" for="gridCheck">Check me out</label>
+                            <div class="form-check mb-3 text-center">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label text-white" for="defaultCheck1">Aceptar <a class="pdv-link" href="text-dark">política de privacidad.</a></label>
                             </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block">Registrarme</button>
+                            <button type="submit" class="btn btn-primary btn-block">Registrarme</button>
                     </form>
+                    <p class="text-center text-white mt-4 ">Al registrarte, aceptas nuestras Condiciones. Obtén más información sobre cómo recopilamos, usamos y compartimos tus datos en la Política de datos, así como el uso que hacemos de las cookies y tecnologías similares en la Política de
+                        cookies.
+                    </p>
+                    </div>
                 </div>
             </div>
-        </div>
     </main>
 
 
