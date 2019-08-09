@@ -16,7 +16,7 @@ $numDatos = 50;
 for ($i=0;$i<$numDatos;$i++){
     $u = new usuario();
     array_push($usuarios,$u);
-    var_dump($u);
+
 }
 
 echo "añadiendo los datos a la base de datos</br>";
@@ -40,7 +40,7 @@ foreach($usuarios as $u){
     $ciudad=$u->getCiudad();
     $fecha=date($u->getFecha_nac()); 
     $stmt->execute();
-    printf("%d Fila insertada.\n", $stmt->affected_rows);
+
 }
 $stmt->close();
 $con->close();
