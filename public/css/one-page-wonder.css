@@ -189,3 +189,17 @@ main.registro .form-control {
 main.registro .form-group {
     width: 100%;
 }
+
+main.logIn{
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 7rem;
+    background: -webkit-gradient(linear, left bottom, left top, from(#ff6a00), to(#ee0979));
+    background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    height: calc(100vh - 51px);
+    padding-top: 280px;
+}
