@@ -3,15 +3,16 @@
 require_once('header.php');
 
 ?>
-
-  <header class="masthead text-center text-white">
-    <div class="masthead-content">
-      <div class="container">
-        <a href="#" class="btn btn-primary btn-xl rounded-pill mt-5">Iniciar Sesion</a></a>
-      </div>
+  <main class="text-center text-white logIn mw-100">
+    <div class="container">
+      <h1>Inicio de sesión</h1>
+      <input type="text" class="form-control w-50 mx-auto" placeholder="Nombre de usuario" 
+            aria-label="Nombre de usuario" aria-describedby="basic-addon1">
+      <input type="text" class="form-control mt-2 w-50 mx-auto" placeholder="Contraseña" 
+            aria-label="Contraseña" aria-describedby="basic-addon1">
+      <button class="btn btn-primary btn-xl rounded-pill mt-5">Iniciar Sesión</button>
     </div>
-  </header>
-
+  </main>
 <?php
     require_once('footer.php');
     require_once('scripts.php');
