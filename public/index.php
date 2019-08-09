@@ -39,8 +39,10 @@ require_once('header.php');
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <h2 class="display-4">For those about to rock...</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+            <h2 class="display-4">Para ti deportista</h2>
+            <p>¿Haces deporte y quieres compartir tus logros con una comunidad afin? 
+              Unete a SharesporT la red social de referencia en temas deportivos.
+              ¡ No lo dudes ! Unete y comparte. </p>
           </div>
         </div>
       </div>
@@ -57,8 +59,10 @@ require_once('header.php');
         </div>
         <div class="col-lg-6">
           <div class="p-5">
-            <h2 class="display-4">We salute you!</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+            <h2 class="display-4">Siempre cercanos</h2>
+            <p>Nuestro equipo de moderadores y administradores siempre estara a tu disposión para resolver tus problemas y dudas. 
+              Ya sea para resolver un problema, obtener información o proponer mejoras en la red comunicate con ellos y resolveremos 
+              el asunto con la mayor brevedad posible.</p>
           </div>
         </div>
       </div>
@@ -75,8 +79,11 @@ require_once('header.php');
         </div>
         <div class="col-lg-6 order-lg-1">
           <div class="p-5">
-            <h2 class="display-4">Let there be rock!</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
+            <h2 class="display-4">Comunidad unida</h2>
+            <p>No dejes que tu relacion con SharesporT acabe cuando cierras sesion.Unete a nuestros grupos de runners y descubre rincones o rutas en tu ciudad como nunca habias soñado.
+              Descubre caminos lejanos junto a nuestro grupo de trail running o 'quema el asfalto' acompañando al grupo de ciclismo. ¡ El limite lo pones tu !
+              SharesporT se ocupa de que puedas enviarlo lo mas lejos posible.
+            </p>
           </div>
         </div>
       </div>
