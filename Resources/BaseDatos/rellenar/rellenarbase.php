@@ -42,6 +42,7 @@ foreach($usuarios as $u){
     $stmt->execute();
 
 }
+
 $stmt->close();
 $con->close();
 echo "terminado</br>";
