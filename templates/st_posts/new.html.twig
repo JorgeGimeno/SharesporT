@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New StPosts{% endblock %}
+
+{% block body %}
+    <h1>Create new StPosts</h1>
+
+    {{ include('st_posts/_form.html.twig') }}
+
+    <a href="{{ path('st_posts_index') }}">back to list</a>
+{% endblock %}

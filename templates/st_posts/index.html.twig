@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StPosts index{% endblock %}
+
+{% block body %}
+    <h1>StPosts index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FechaHora</th>
+                <th>Contenido</th>
+                <th>IdUsuario</th>
+                <th>IdDeporte</th>
+                <th>IdPostPadre</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for st_post in st_posts %}
+            <tr>
+                <td>{{ st_post.id }}</td>
+                <td>{{ st_post.fechaHora ? st_post.fechaHora|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ st_post.contenido }}</td>
+                <td>{{ st_post.idUsuario }}</td>
+                <td>{{ st_post.idDeporte }}</td>
+                <td>{{ st_post.idPostPadre }}</td>
+                <td>
+                    <a href="{{ path('st_posts_show', {'id': st_post.id}) }}">show</a>
+                    <a href="{{ path('st_posts_edit', {'id': st_post.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('st_posts_new') }}">Create new</a>
+{% endblock %}

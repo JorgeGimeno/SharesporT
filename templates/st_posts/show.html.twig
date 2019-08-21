@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StPosts{% endblock %}
+
+{% block body %}
+    <h1>StPosts</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ st_post.id }}</td>
+            </tr>
+            <tr>
+                <th>FechaHora</th>
+                <td>{{ st_post.fechaHora ? st_post.fechaHora|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Contenido</th>
+                <td>{{ st_post.contenido }}</td>
+            </tr>
+            <tr>
+                <th>IdUsuario</th>
+                <td>{{ st_post.idUsuario }}</td>
+            </tr>
+            <tr>
+                <th>IdDeporte</th>
+                <td>{{ st_post.idDeporte }}</td>
+            </tr>
+            <tr>
+                <th>IdPostPadre</th>
+                <td>{{ st_post.idPostPadre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('st_posts_index') }}">back to list</a>
+
+    <a href="{{ path('st_posts_edit', {'id': st_post.id}) }}">edit</a>
+
+    {{ include('st_posts/_delete_form.html.twig') }}
+{% endblock %}

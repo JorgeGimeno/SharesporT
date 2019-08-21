@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StUsuarios index{% endblock %}
+
+{% block body %}
+    <h1>StUsuarios index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nick</th>
+                <th>Password</th>
+                <th>Mail</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Ciudad</th>
+                <th>Foto</th>
+                <th>FechaNac</th>
+                <th>Estado</th>
+                <th>Permisos</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for st_usuario in st_usuarios %}
+            <tr>
+                <td>{{ st_usuario.id }}</td>
+                <td>{{ st_usuario.nick }}</td>
+                <td>{{ st_usuario.password }}</td>
+                <td>{{ st_usuario.mail }}</td>
+                <td>{{ st_usuario.nombre }}</td>
+                <td>{{ st_usuario.apellidos }}</td>
+                <td>{{ st_usuario.ciudad }}</td>
+                <td>{{ st_usuario.foto }}</td>
+                <td>{{ st_usuario.fechaNac ? st_usuario.fechaNac|date('Y-m-d') : '' }}</td>
+                <td>{{ st_usuario.estado }}</td>
+                <td>{{ st_usuario.permisos }}</td>
+                <td>
+                    <a href="{{ path('st_usuarios_show', {'id': st_usuario.id}) }}">show</a>
+                    <a href="{{ path('st_usuarios_edit', {'id': st_usuario.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('st_usuarios_new') }}">Create new</a>
+{% endblock %}

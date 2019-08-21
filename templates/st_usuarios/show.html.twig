@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StUsuarios{% endblock %}
+
+{% block body %}
+    <h1>StUsuarios</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ st_usuario.id }}</td>
+            </tr>
+            <tr>
+                <th>Nick</th>
+                <td>{{ st_usuario.nick }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ st_usuario.password }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ st_usuario.mail }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ st_usuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ st_usuario.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Ciudad</th>
+                <td>{{ st_usuario.ciudad }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ st_usuario.foto }}</td>
+            </tr>
+            <tr>
+                <th>FechaNac</th>
+                <td>{{ st_usuario.fechaNac ? st_usuario.fechaNac|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{ st_usuario.estado }}</td>
+            </tr>
+            <tr>
+                <th>Permisos</th>
+                <td>{{ st_usuario.permisos }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('st_usuarios_index') }}">back to list</a>
+
+    <a href="{{ path('st_usuarios_edit', {'id': st_usuario.id}) }}">edit</a>
+
+    {{ include('st_usuarios/_delete_form.html.twig') }}
+{% endblock %}
