@@ -14,6 +14,6 @@ class EditarDatosUsuarioController extends AbstractController
     {
         return $this->render('editar_datos_usuario/index.html.twig', [
             'controller_name' => 'EditarDatosUsuarioController',
-        ]);
+         ]);
     }
 }
