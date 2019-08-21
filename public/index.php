@@ -6,15 +6,32 @@ require_once('header.php');
 <main class="index">
   <header class="masthead text-center text-white">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img class="d-block w-100" src="../Resources/PlantillaInicio/img/04.jpg" alt="First slide">
+          <div class="carousel-caption d-none d-md-block border border-dark rounded" style="color:black; background-color:rgba(255, 106, 0, 0.5)">
+            <h5>Somos la ostia</h5>
+            <p>Y lo sabes...</p>
+          </div>
       </div>
       <div class="carousel-item">
         <img class="d-block w-100" src="../Resources/PlantillaInicio/img/05.jpg" alt="Second slide">
+          <div class="carousel-caption d-none d-md-block border border-dark rounded" style="color:black; background-color:rgba(255, 106, 0, 0.5)">
+            <h5>Tu también podrías molar como nosotros</h5>
+            <p>Si te unes a Sharesport atraeras todas las miradas</p>
+          </div>
       </div>
       <div class="carousel-item">
         <img class="d-block w-100" src="../Resources/PlantillaInicio/img/06.jpg" alt="Third slide">
+          <div class="carousel-caption d-none d-md-block border border-dark rounded" style="color:black; background-color:rgba(255, 106, 0, 0.5)">
+            <h5>Deja de ser un tipo cualquiera</h5>
+            <p>En sharesport conseguiremos que tengas la imagen que mereces.</p>
+          </div>
       </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
