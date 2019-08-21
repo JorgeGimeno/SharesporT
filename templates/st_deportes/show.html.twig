@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StDeportes{% endblock %}
+
+{% block body %}
+    <h1>StDeportes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ st_deporte.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ st_deporte.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('st_deportes_index') }}">back to list</a>
+
+    <a href="{{ path('st_deportes_edit', {'id': st_deporte.id}) }}">edit</a>
+
+    {{ include('st_deportes/_delete_form.html.twig') }}
+{% endblock %}
