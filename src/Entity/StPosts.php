@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,7 +27,7 @@ class StPosts
      *
      * @ORM\Column(name="fecha_hora", type="datetime", nullable=true, options={"default"="current_timestamp()"})
      */
-    private $fechaHora = 'current_timestamp()';
+    private $fechaHora;
 
     /**
      * @var string|null
@@ -61,12 +62,12 @@ class StPosts
         return $this->id;
     }
 
-    public function getFechaHora(): ?\DateTimeInterface
+    public function getFechaHora(): ?DateTimeInterface
     {
         return $this->fechaHora;
     }
 
-    public function setFechaHora(?\DateTimeInterface $fechaHora): self
+    public function setFechaHora(?DateTimeInterface $fechaHora): self
     {
         $this->fechaHora = $fechaHora;
 

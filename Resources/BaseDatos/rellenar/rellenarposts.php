@@ -26,13 +26,13 @@ $contenido;
 $id_usuario;
 $id_deporte;
 
-$stmt->bind_param("sss", $contenido, $id_usuario, $id_deporte);
+$stmt->bind_param("sii", $contenido, $id_usuario, $id_deporte);
 
-foreach($posts as $p){   
-    $contenido=$p->getContenido();
-    $id_usuario=$p->getId_usuario();
-    $id_deporte=$p->getId_deporte();
-
+foreach($posts as $po){   
+    $contenido=$po->getContenido();
+    $id_usuario=$po->getId_user();
+    $id_deporte=$po->getId_deporte();
+    $stmt->execute();
 }
 
 $stmt->close();

@@ -47,4 +47,55 @@ class StPostsRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+
+    // Devuelve un array de los últimos $numeroPosts publicados
+    public function postsOrdenadosPorFecha(int $numeroPosts)
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.fecha_hora', 'DESC')
+            ->setMaxResults($numeroPosts)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+
+    // Devuelve un array de los últimos $numeroPosts publicados del deporte con id $id_deporte
+    public function postsDeporte(int $id_deporte, int $numeroPosts)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id_deporte = :'.$id_deporte)
+            ->orderBy('s.fecha_hora', 'DESC')
+            ->setMaxResults($numeroPosts)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+    //Devuelve un array de los últimos $numeroPosts publicados por el usuario con id $id_usuario
+    public function postsDeUsuario(int $id_usuario, int $numeroPosts)
+    {
+        return $this->createQueryBuilder('s')
+        ->andWhere('s.id_deporte = :'.$id_usuario)
+        ->orderBy('s.fecha_hora', 'DESC')
+        ->setMaxResults($numeroPosts)
+        ->getQuery()
+        ->getResult()
+    ;
+    }
+
+
+    //Devuelve el número de post que ha publicado el usuario de id $id_usuario
+    public function numeroDePostDeUsuario(int $id_usuario)
+    {
+        return $this->createQueryBuilder('s')
+        ->andWhere('s.id_deporte = :'.$id_usuario)
+        ->getQuery()
+        ->getScalarResult()
+    ;
+    }
 }
