@@ -47,9 +47,17 @@ CREATE TABLE `st_posts` (
   `id_deporte` int(11) NOT NULL,
   `id_post_padre` int(11) DEFAULT -1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `st_posts` */
+
+insert  into `st_posts`(`id`,`fecha_hora`,`contenido`,`id_usuario`,`id_deporte`,`id_post_padre`) values 
+(1,'2019-08-22 12:00:00','Hoy 5km en media hora, me he ganado la hamburguesa, jaja',1,1,-1),
+(2,'2019-01-02 00:00:00','Primer día de crossfit, llevo bien los propósitos de año nuevo',2,4,-1),
+(3,'2019-08-22 13:43:29','Sigo nadando, aún no he encontrado a Nemo pero han caído 2km en hora y 5.',3,3,-1),
+(4,'2019-08-22 13:43:55','Preparando la rutica del sábado, va a ser buena.',1,1,-1),
+(5,'2019-08-22 13:45:46','30km de bici antes de currar, ^_^',7,2,-1),
+(6,'2019-08-22 13:52:59','Hoy día vago, corred vosotros que yo descanso.',1,1,-1);
 
 /*Table structure for table `st_usuarios` */
 
