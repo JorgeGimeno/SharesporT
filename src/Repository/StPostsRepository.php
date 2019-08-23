@@ -53,8 +53,8 @@ class StPostsRepository extends ServiceEntityRepository
     // Devuelve un array de los últimos $numeroPosts publicados
     public function postsOrdenadosPorFecha(int $numeroPosts)
     {
-        return $this->createQueryBuilder('s')
-            ->orderBy('s.fecha_hora', 'DESC')
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.fechaHora', 'DESC')
             ->setMaxResults($numeroPosts)
             ->getQuery()
             ->getResult()
@@ -67,8 +67,9 @@ class StPostsRepository extends ServiceEntityRepository
     public function postsDeporte(int $id_deporte, int $numeroPosts)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.id_deporte = :'.$id_deporte)
-            ->orderBy('s.fecha_hora', 'DESC')
+            ->andWhere('s.idDeporte = :id_d')
+            ->setParameter('id_d',$id_deporte)
+            ->orderBy('s.fechaHora', 'DESC')
             ->setMaxResults($numeroPosts)
             ->getQuery()
             ->getResult()
@@ -80,8 +81,9 @@ class StPostsRepository extends ServiceEntityRepository
     public function postsDeUsuario(int $id_usuario, int $numeroPosts)
     {
         return $this->createQueryBuilder('s')
-        ->andWhere('s.id_deporte = :'.$id_usuario)
-        ->orderBy('s.fecha_hora', 'DESC')
+        ->andWhere('s.idUsuario = :id_u')
+        ->setParameter('id_u',$id_usuario)
+        ->orderBy('s.fechaHora', 'DESC')
         ->setMaxResults($numeroPosts)
         ->getQuery()
         ->getResult()
@@ -93,7 +95,8 @@ class StPostsRepository extends ServiceEntityRepository
     public function numeroDePostDeUsuario(int $id_usuario)
     {
         return $this->createQueryBuilder('s')
-        ->andWhere('s.id_deporte = :'.$id_usuario)
+        ->andWhere('s.idUsuario = :id_u')
+        ->setParameter('id_u',$id_usuario)
         ->getQuery()
         ->getScalarResult()
     ;
