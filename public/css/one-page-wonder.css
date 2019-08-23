@@ -218,3 +218,9 @@
         height: calc(100vh - 51px);
         padding-top: 280px;
     }
+    
+    main.new_post {
+        margin-top: 180px;
+        height: 71vh;
+        max-width: 600px;
+    }
