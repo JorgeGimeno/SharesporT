@@ -95,10 +95,11 @@ class StPostsRepository extends ServiceEntityRepository
     public function numeroDePostDeUsuario(int $id_usuario)
     {
         return $this->createQueryBuilder('s')
+        ->select('count(s.id)')
         ->andWhere('s.idUsuario = :id_u')
         ->setParameter('id_u',$id_usuario)
         ->getQuery()
-        ->getScalarResult()
+        ->getSingleScalarResult()
     ;
     }
 }
