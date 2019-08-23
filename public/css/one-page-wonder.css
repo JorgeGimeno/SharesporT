@@ -37,7 +37,7 @@
     .navbar-custom {
         padding-top: 1rem;
         padding-bottom: 1rem;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: rgba(0, 0, 0, 1);
     }
     
     .navbar-custom .navbar-brand {
@@ -45,6 +45,10 @@
         font-size: 1rem;
         letter-spacing: 0.1rem;
         font-weight: 700;
+    }
+    
+    .navbar-brand {
+        height: 40px;
     }
     
     .navbar-custom .navbar-nav .nav-item .nav-link {
@@ -57,8 +61,9 @@
     header.masthead {
         position: relative;
         overflow: hidden;
-        padding-top: calc(7rem + 72px);
-        padding-bottom: 7rem;
+        padding-top: 72px;
+        padding-bottom: 0;
+        margin-bottom: 75px;
         background: -webkit-gradient(linear, left bottom, left top, from(#ff6a00), to(#ee0979));
         background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
         background-repeat: no-repeat;
@@ -118,8 +123,9 @@
     
     @media (min-width: 992px) {
         header.masthead {
-            padding-top: calc(10rem + 55px);
-            padding-bottom: 10rem;
+            padding-top: 72px;
+            padding-bottom: 0;
+            margin-bottom: 75px;
         }
         header.masthead .masthead-content .masthead-heading {
             font-size: 6rem;

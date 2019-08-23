@@ -94,4 +94,5 @@ class StPostsController extends AbstractController
 
         return $this->redirectToRoute('st_posts_index');
     }
+
 }
