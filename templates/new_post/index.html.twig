@@ -3,7 +3,7 @@
 {% block body %}
 
 <main class="new_post">
-    <div class="example-wrapper">
+    <div class="example-wrapper"> 
         <div class="card gedf-card">
             <div class="card-header">
                 <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -16,14 +16,15 @@
                     </li>
                 </ul>
             </div>
-            <form class="card-body" action="Controller/NewPostController" method="post">
+            {{ form_start(form, {'class':'card-body'}) }}
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                         <div class="form-group">
                             <label class="sr-only" for="contenido">post</label>
-                            <textarea class="form-control" id="contenido" name="contenido" rows="3" 
-                                placeholder="Que estas pensando?">
-                            </textarea>
+                            {{form_widget(form.contenido, 
+                                    {'placeholder':'Que estas pensando?', 
+                                    'class':'form-control',
+                                    'rows':'3' })}}
                         </div>
 
                     </div>
@@ -39,19 +40,19 @@
                 </div>
                 <div class="btn-toolbar justify-content-between">
                     <div class="btn-group">
-                        <button name="newPost" type="submit" class="btn btn-primary">share</button>
+                        {% for depor in deportes %}
+                            {{form_widget(form.contenido, 
+                                    {'value':{{depor.nombre}},
+                                    'rows':'3' })}}
+                        {% endfor %}           
                     </div>
                     <div class="btn-group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-globe"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
-                            <a class="dropdown-item" href="#"><i class="fa fa-globe"></i> Public</a>
-                        </div>
+                        <button name="newPost" type="submit" class="btn btn-primary">Compartir</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            {{ form_end(form) }}
+        </form>
     </div>
 </main>
 {% endblock %}
+
