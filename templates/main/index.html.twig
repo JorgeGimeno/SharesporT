@@ -32,7 +32,7 @@
      
            $('#user_panel').append(htmlRecibido);
         }});
-        $.ajax({ url: "/listadoPost",
+        $.ajax({ url: "/listadoPost/5",
         success: function(htmlRecibido){
            
            $('#post_list').append(htmlRecibido);
@@ -94,6 +94,7 @@
     </div>
 </main>
 {% endblock %}
+
 
 
 
