@@ -1,8 +1,7 @@
 
 
 
-    {% for p in arrayPost %}
-                <div class="card gedf-card">
+<div class="card gedf-card">
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
@@ -10,9 +9,8 @@
                                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0">{# {{ usuario }} #}</div>
-                                   
-                                    <div class="h7 text-muted"> {# {{ p.nombre }} {{ p.apellidos }} #} </div>
+                                    <div class="h5 m-0">@LeeCross</div>
+                                    <div class="h7 text-muted">Miracles Lee Cross</div>
                                 </div>
                             </div>
                             <div>
@@ -29,13 +27,17 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{p.fechaHora|date("d-m-Y H:m:s")}}</div>
-                        
+                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+                        <a class="card-link" href="#">
+                            <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
+                        </a>
 
                         <p class="card-text">
-                            {{ p.contenido }}
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla rem eos ipsa praesentium esse magnam nemo dolor
+                            sequi fuga quia quaerat cum, obcaecati hic, molestias minima iste voluptates.
                         </p>
                     </div>
                     <div class="card-footer">
@@ -44,7 +46,4 @@
                         <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
                     </div>
                 </div>
-                 {% else %}
-                    No hay registros
-                {% endfor %}
 

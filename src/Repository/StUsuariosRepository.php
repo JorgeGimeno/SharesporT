@@ -47,4 +47,15 @@ class StUsuariosRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findById($id)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
 }
