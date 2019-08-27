@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+{% block stylesheets %}
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
+
+{% endblock %}
+
+{% block javascripts %}
+<script>
+   /* $(document).ready(function(){
+        $.ajax({
+            success: function(htmlRecibido){
+                 url:'/userpanel';
+                 alert("PASA POR ACA 1");
+                $('#user_panel').html(htmlRecibido);
+                url:'/newpost';
+           
+                alert("PASA POR ACA 2");
+                $('#new_post').html(htmlRecibido);
+                url:'/listadopost/5';
+    
+                 alert("PASA POR ACA 3");     
+                  $('#post_list').html(htmlRecibido);       }
+       
+        })
+    }*/
+    $(document).ready(function(){
+        $.ajax({ url: "/userpanel",
+        success: function(htmlRecibido){
+     
+           $('#user_panel').append(htmlRecibido);
+        }});
+        $.ajax({ url: "/listadoPost/5",
+        success: function(htmlRecibido){
+           
+           $('#post_list').append(htmlRecibido);
+        }});
+        $.ajax({ url: "/new_post",
+        success: function(htmlRecibido){
+   
+           $('#new_post').append(htmlRecibido);
+        }});
+        $.ajax({ url: "/post_filter",
+        success: function(htmlRecibido){
+           
+           $('#post_filter').append(htmlRecibido);
+        }});
+});
+</script>
+
+{% endblock %}
+
+{% block body %}
+
+<main class="sharesport_main">
+    <div class="container-fluid gedf-wrapper">
+        <div class="row">
+            <section id='user_panel' class="user_panel col-md-3">
+                 {# cargara por ajax el user_panel #}
+             </section>
+            <section  class="main_post col-md-6 gedf-main">
+                 <div id='new_post'>{# cargara por ajax el new_post #}</div>
+                 <div id='post_filter'>{# cargara por ajax el filter_post #}</div>
+                 <div id='post_list'>{# cargara por ajax el post_list #}</div>
+                 
+            </section>
+            <section class="asaberparaque col-md-3">
+            <div class="">
+                <div class="card gedf-card">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                            card's content.</p>
+                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>
+                    </div>
+                </div>
+                <div class="card gedf-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                                card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                    </div>
+            </div>
+            </section>
+        </div>
+    </div>
+</main>
+{% endblock %}
+
+
+
+
+
