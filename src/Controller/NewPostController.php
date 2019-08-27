@@ -18,11 +18,6 @@ class NewPostController extends AbstractController
      */
     public function index(Request $req, LoggerInterface $logger)
     {
-
-        //Obtenemos la lista de deportes
-        $listaDeportes = $this->getDoctrine()
-            ->getRepository(StDeportes::class)
-            ->findAll();
         
         //creamos un objeto post
         $newPost = new StPosts();
@@ -39,7 +34,7 @@ class NewPostController extends AbstractController
             $entityManager->persist($newPost);
             $entityManager->flush();
 
-            return $this->redirectToRoute('new_post');
+            return $this->redirectToRoute('main');
              
         } else {
             return $this->render('new_post/index.html.twig', [
