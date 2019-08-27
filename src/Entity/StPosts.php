@@ -34,7 +34,7 @@ class StPosts
      *
      * @ORM\Column(name="contenido", type="string", length=1000, nullable=true, options={"default"="NULL"})
      */
-    private $contenido = 'NULL';
+    private $contenido;
 
     /**
      * @var int

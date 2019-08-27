@@ -21,10 +21,12 @@
                     <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
                         <div class="form-group">
                             <label class="sr-only" for="contenido">post</label>
-                            {{form_widget(form.contenido, 
-                                    {'placeholder':'Que estas pensando?', 
+                            {{form_widget(form.contenido, {
+                                'attr':{
+                                    'placeholder':'Que estas pensando?',
                                     'class':'form-control',
-                                    'rows':'3' })}}
+                                    'rows':'3'
+                                    }})}}
                         </div>
 
                     </div>
@@ -40,11 +42,11 @@
                 </div>
                 <div class="btn-toolbar justify-content-between">
                     <div class="btn-group">
-                        {% for depor in deportes %}
-                            {{form_widget(form.contenido, 
-                                    {'value':{{depor.nombre}},
-                                    'rows':'3' })}}
-                        {% endfor %}           
+                        {{form_widget(form.idDeporte, {
+                            'attr':{
+                                'class':'dropdown show'
+                            }
+                        })}}      
                     </div>
                     <div class="btn-group">
                         <button name="newPost" type="submit" class="btn btn-primary">Compartir</button>
