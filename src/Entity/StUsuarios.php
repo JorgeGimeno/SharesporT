@@ -2,15 +2,19 @@
 
 namespace App\Entity;
 
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * StUsuarios
  *
  * @ORM\Table(name="st_usuarios")
  * @ORM\Entity(repositoryClass="App\Repository\StUsuariosRepository")
+ * UniqueEntity(fields={"mail"}, message="Ya existe una cuenta registrada con este email")
  */
-class StUsuarios
+class StUsuarios implements UserInterface
 {
     /**
      * @var int
@@ -29,7 +33,7 @@ class StUsuarios
     private $nick;
 
     /**
-     * @var string
+     * @var string The hashed password
      *
      * @ORM\Column(name="password", type="string", length=500, nullable=false)
      */
@@ -38,9 +42,9 @@ class StUsuarios
     /**
      * @var string|null
      *
-     * @ORM\Column(name="mail", type="string", length=50, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="mail", type="string", length=50, nullable=false, unique=true)
      */
-    private $mail = 'NULL';
+    private $mail;
 
     /**
      * @var string|null
@@ -75,7 +79,7 @@ class StUsuarios
      *
      * @ORM\Column(name="fecha_nac", type="date", nullable=true, options={"default"="NULL"})
      */
-    private $fechaNac = 'NULL';
+    private $fechaNac;
 
     /**
      * @var string|null
@@ -85,17 +89,19 @@ class StUsuarios
     private $estado = 'NULL';
 
     /**
-     * @var string|null
+     * @var string|null 
      *
-     * @ORM\Column(name="permisos", type="string", length=50, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="permisos", type="json", nullable=true, options={"default"="NULL"})
      */
-    private $permisos = 'NULL';
+    private $permisos = [];
 
     public function getId(): ?string
     {
         return $this->id;
     }
-
+    /**
+     * @see UserInterface
+     */
     public function getNick(): ?string
     {
         return $this->nick;
@@ -107,7 +113,9 @@ class StUsuarios
 
         return $this;
     }
-
+    /**
+     * @see UserInterface
+     */
     public function getPassword(): ?string
     {
         return $this->password;
@@ -119,7 +127,9 @@ class StUsuarios
 
         return $this;
     }
-
+    /**
+     * @see UserInterface
+     */
     public function getMail(): ?string
     {
         return $this->mail;
@@ -131,8 +141,21 @@ class StUsuarios
 
         return $this;
     }
-
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
     public function getNombre(): ?string
+    {
+        return $this->nombre;
+    }
+
+    /**
+     *
+     * @see UserInterface
+     */
+    public function getUserName(): ?string
     {
         return $this->nombre;
     }
@@ -143,7 +166,9 @@ class StUsuarios
 
         return $this;
     }
-
+    /**
+     * @see UserInterface
+     */
     public function getApellidos(): ?string
     {
         return $this->apellidos;
@@ -155,7 +180,9 @@ class StUsuarios
 
         return $this;
     }
-
+    /**
+     * @see UserInterface
+     */
     public function getCiudad(): ?string
     {
         return $this->ciudad;
@@ -167,7 +194,9 @@ class StUsuarios
 
         return $this;
     }
-
+    /**
+     * @see UserInterface
+     */
     public function getFoto()
     {
         return $this->foto;
@@ -179,8 +208,10 @@ class StUsuarios
 
         return $this;
     }
-
-    public function getFechaNac(): ?\DateTimeInterface
+    /**
+     * @see UserInterface
+     */
+    public function getFechaNac(): ?DateTimeInterface
     {
         return $this->fechaNac;
     }
@@ -191,7 +222,9 @@ class StUsuarios
 
         return $this;
     }
-
+    /**
+     * @see UserInterface
+     */
     public function getEstado(): ?string
     {
         return $this->estado;
@@ -203,18 +236,51 @@ class StUsuarios
 
         return $this;
     }
-
-    public function getPermisos(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getPermisos(): array
     {
-        return $this->permisos;
+        $roles = $this->permisos;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setPermisos(?string $permisos): self
+    public function setPermisos(array $permisos): self
     {
         $this->permisos = $permisos;
 
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->permisos;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
 
+        return array_unique($roles);
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
 }
