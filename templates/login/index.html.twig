@@ -4,13 +4,33 @@
 
 {% block body %}
 <main class="text-center text-white logIn mw-100">
+
+<form method="post">
+    
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+        </div>
+    {% endif %}
+
     <div class="container">
       <h1>Inicio de sesión</h1>
-      <input type="text" class="form-control w-50 mx-auto" placeholder="Nombre de usuario" 
-            aria-label="Nombre de usuario" aria-describedby="basic-addon1">
-      <input type="text" class="form-control mt-2 w-50 mx-auto" placeholder="Contraseña" 
-            aria-label="Contraseña" aria-describedby="basic-addon1">
+      {# <input type="text" class="form-control w-50 mx-auto" placeholder="Nombre de usuario" 
+            aria-label="Nombre de usuario" aria-describedby="basic-addon1"> #}
+      <label for="inputEmail" class="sr-only">Email</label>
+      <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+      {# <input type="text" class="form-control mt-2 w-50 mx-auto" placeholder="Contraseña" 
+            aria-label="Contraseña" aria-describedby="basic-addon1"> #}
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
       <button class="btn btn-primary btn-xl rounded-pill mt-5">Iniciar Sesión</button>
     </div>
-  </main>
+  </form>
+
+</main>
 {% endblock %}
