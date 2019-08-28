@@ -18,9 +18,6 @@ class NewPostController extends AbstractController
      */
     public function index(Request $req, LoggerInterface $logger)
     {
-        
-        $logger->error('dentro del controller');
-
         $newPost = new StPosts();
         $form = $this->createForm(StPostsType::class, $newPost);
         $form->handleRequest($req);
@@ -29,7 +26,6 @@ class NewPostController extends AbstractController
 
             $newPost->setFechaHora(new DateTime());
             $newPost->setIdUsuario($this->getUser()->getId());
-            $logger->error('dentro del if ' . $newPost->getContenido());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newPost);
