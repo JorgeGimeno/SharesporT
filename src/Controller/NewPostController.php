@@ -19,7 +19,8 @@ class NewPostController extends AbstractController
     public function index(Request $req, LoggerInterface $logger)
     {
         
-        //creamos un objeto post
+        $logger->error('dentro del controller');
+
         $newPost = new StPosts();
         $form = $this->createForm(StPostsType::class, $newPost);
         $form->handleRequest($req);
@@ -27,8 +28,8 @@ class NewPostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) { 
 
             $newPost->setFechaHora(new DateTime());
-            //$newPost->setIdUsuario($this->getUser()->getId());
-            $newPost->setIdUsuario(1);
+            $newPost->setIdUsuario($this->getUser()->getId());
+            $logger->error('dentro del if ' . $newPost->getContenido());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newPost);
@@ -38,8 +39,7 @@ class NewPostController extends AbstractController
              
         } else {
             return $this->render('new_post/index.html.twig', [
-                'deportes' => $listaDeportes,
-                'form' => $form->createView()
+                'form' => $form->createView(),
             ]);
         }
 
