@@ -15,11 +15,11 @@ class UserPanelController extends AbstractController
     {
         $p = $this->getDoctrine()->getRepository(StUsuarios::class);
 
-        $id = $this->get_current_user()->getId();
-        $idResult = $p->findOneBy(array('id'=>$id));
+        $usuario = $this->getUser();
+        //$idResult = $p->findOneBy(array('id'=>$id));
 
         return $this->render('user_panel/index.html.twig', [
-            'Usuario' => $idResult,
+            'Usuario' => $usuario,
             
 
         ]);
