@@ -174,13 +174,17 @@
     }
     /* registro.php */
     
+    main {
+        padding-top: 135px;
+    }
+    
     main.registro {
         background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
         background-repeat: no-repeat;
         background-position: center center;
         background-attachment: scroll;
         background-size: cover;
-        padding-top: 190px;
+        padding-top: 135px;
         padding-bottom: 75px;
     }
     
@@ -209,6 +213,33 @@
         color: rgba(0, 0, 0, 0.9);
         background-color: #fff !important;
         border-color: #eee !important;
+    }
+    
+    main.registro select {
+        width: 33.3%;
+        height: 37px;
+        padding-left: 21px;
+    }
+    
+    main.registro select {
+        color: grey;
+    }
+    
+    main.registro label[for="fechaNac"] {
+        color: white;
+        text-transform: capitalize;
+        display: block;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 5px;
+        margin-top: 4px;
+        letter-spacing: 2px;
+        font-weight: 400;
+        font-size: 16px;
+    }
+    
+    main.registro .fechaLabelContainer {
+        background: rgba(255, 255, 255, 0.2)
     }
     /* login.php */
     
