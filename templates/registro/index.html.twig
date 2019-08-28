@@ -26,8 +26,10 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="fechaNac">Fecha Nacimiento</label>
-                                {{ form_widget(form.fechaNac, {'attr':{'type':'date'}} )}}
+                                <div class="fechaLabelContainer">
+                                    <label for="fechaNac">Fecha Nacimiento</label>
+                                </div>
+                                {{ form_widget(form.fechaNac)}}
                                 {# <input type="email" class="form-control" id="apellidos" placeholder="Apellidos"> #}
                             </div>
                         </div>

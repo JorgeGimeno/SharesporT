@@ -41,10 +41,10 @@ class StRegistrationFormType extends AbstractType
             ->add('nombre')
             ->add('apellidos')
             ->add('fechaNac', BirthdayType::class, [
+                'format' => 'ddMMyyyy',
                 'placeholder' => [
-                    'year' => 'Año', 'month' => 'Mes', 'day' => 'Día',
-                'class' => 'form-control'
-            ]])
+                    'day' => 'Día', 'month' => 'Mes', 'year' => 'Año'],
+            ])
             
             // ->add('agreeTerms', CheckboxType::class, [
             //     'mapped' => false,
