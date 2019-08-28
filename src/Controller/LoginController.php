@@ -17,7 +17,6 @@ class LoginController extends AbstractController
         $usuario = $this->getUser();
 
         if ($usuario){
-            alert("Vamos a mandarte al main");
             $this->redirectToRoute('main');            
         }
         // get the login error if there is one
