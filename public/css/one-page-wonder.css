@@ -241,7 +241,7 @@
     main.registro .fechaLabelContainer {
         background: rgba(255, 255, 255, 0.2)
     }
-    /* login.php */
+    /* login */
     
     main.logIn {
         position: relative;
@@ -259,4 +259,24 @@
     main.new_post {
         margin-top: 180px;
         max-width: 600px;
+    }
+    /* index */
+    
+    main.index {
+        padding-top: 0;
+    }
+    /* sharesport main */
+    
+    main.sharesport_main div#post_filter {
+        height: 50px;
+        margin-bottom: 18px;
+        background: #CCC;
+    }
+    
+    main.sharesport_main div#new_post {
+        margin-bottom: 18px;
+    }
+    
+    main.sharesport_main .card.gedf-card {
+        margin-bottom: 10px;
     }
