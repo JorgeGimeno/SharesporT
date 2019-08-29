@@ -265,6 +265,37 @@
     main.index {
         padding-top: 0;
     }
+    
+    .navbar-custom .navbar-brand {
+        text-transform: uppercase;
+        font-family: 'Lexend Zetta', sans-serif;
+        font-size: 1.2rem;
+        letter-spacing: -2px;
+        font-weight: 100;
+    }
+    
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.6);
+    }
+    
+    .carousel-caption h5 {
+        font-family: 'Cinzel', serif;
+        font-weight: 400!important;
+        font-size: 34px;
+        color: white;
+    }
+    
+    .carousel-caption p {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        color: white;
+        font-weight: 300;
+        font-size: 19px;
+    }
+    
+    .carousel-caption h5 span {
+        font-size: 56px;
+    }
     /* sharesport main */
     
     main.sharesport_main div#post_filter {
