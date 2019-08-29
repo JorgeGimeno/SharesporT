@@ -16,7 +16,7 @@ class FiltroBusquedaType extends AbstractType
     private $repoDepor;
     private $repoUsu;
 
-    public function __construct(StDeportesRepository $repoDepor,
+    public function __construct(StDeportesRepository $repoDepor, 
      StUsuariosRepository $repoUsu){
         $this->repoDepor=$repoDepor;
         $this->repoUsu=$repoUsu;

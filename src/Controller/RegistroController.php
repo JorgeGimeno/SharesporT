@@ -37,7 +37,7 @@ class RegistroController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('main');
+            return $this->redirectToRoute('index');
         }
 
         return $this->render('registro/index.html.twig', [
