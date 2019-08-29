@@ -4,10 +4,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="h5">{{ Usuario.nick }}</div>
-                        <div class="h7 text-muted">Fullname : {{ Usuario.nombre }} {{Usuario.apellidos }}</div>
-                        <div class="h7">Developer of web applications, JavaScript, PHP, Java, Python, Ruby, Java, Node.js,
-                            etc.
+                        <div class="h7 text-muted">Fullname : {{ Usuario.nombre }} {{Usuario.apellidos }}</div><br>
+                        <div class="h5"> Fecha Nacimiento 
                         </div>
+                        <div class="h6">{{Usuario.fechaNac|date("d-m-Y")}}</h5><br><br>
+                        <div class="h5"> Ciudad
+                        </div>
+                        <div class="h6">{{Usuario.ciudad}}</h5>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
