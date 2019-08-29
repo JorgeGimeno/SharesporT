@@ -10,9 +10,10 @@
                                     <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
                                 </div>
                                 <div class="ml-2">
-                                    <div class="h5 m-0">{# {{ usuario }} #}</div>
+                                    <div class="h5 m-0"> {{ p.usuario.nick }} </div>
                                    
-                                    <div class="h7 text-muted"> {# {{ p.nombre }} {{ p.apellidos }} #} </div>
+                                    <div class="h7 text-muted">  {{ p.usuario.nombre }} {{ p.usuario.apellidos }}  </div>
+                                    <div class="h7 text-muted">  {{ p.deporte.nombre }}   </div>
                                 </div>
                             </div>
                             <div>

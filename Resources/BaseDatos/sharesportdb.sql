@@ -47,17 +47,19 @@ CREATE TABLE `st_posts` (
   `id_deporte` int(11) NOT NULL,
   `id_post_padre` int(11) DEFAULT -1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `st_posts` */
 
 insert  into `st_posts`(`id`,`fecha_hora`,`contenido`,`id_usuario`,`id_deporte`,`id_post_padre`) values 
-(1,'2019-08-22 12:00:00','Hoy 5km en media hora, me he ganado la hamburguesa, jaja',1,1,-1),
-(2,'2019-01-02 00:00:00','Primer día de crossfit, llevo bien los propósitos de año nuevo',2,4,-1),
-(3,'2019-08-22 13:43:29','Sigo nadando, aún no he encontrado a Nemo pero han caído 2km en hora y 5.',3,3,-1),
-(4,'2019-08-22 13:43:55','Preparando la rutica del sábado, va a ser buena.',1,1,-1),
-(5,'2019-08-22 13:45:46','30km de bici antes de currar, ^_^',7,2,-1),
-(6,'2019-08-22 13:52:59','Hoy día vago, corred vosotros que yo descanso.',1,1,-1);
+(1,'2019-08-22 12:00:00','Hoy 5km en media hora, me he ganado la hamburguesa, jaja',201,1,-1),
+(2,'2019-01-02 00:00:00','Primer día de crossfit, llevo bien los propósitos de año nuevo',202,4,-1),
+(3,'2019-08-22 13:43:29','Sigo nadando, aún no he encontrado a Nemo pero han caído 2km en hora y 5.',203,3,-1),
+(4,'2019-08-22 13:43:55','Preparando la rutica del sábado, va a ser buena.',201,1,-1),
+(5,'2019-08-22 13:45:46','30km de bici antes de currar, ^_^',207,2,-1),
+(6,'2019-08-22 13:52:59','Hoy día vago, corred vosotros que yo descanso.',201,1,-1),
+(7,'2019-08-29 09:55:14','Vamos a correr 100km!!!!!!!!!!!!!!!!!!!',255,1,-1),
+(8,'2019-08-29 10:04:30','El record lo tengo en 3 y medio :)',256,3,-1);
 
 /*Table structure for table `st_usuarios` */
 
@@ -76,7 +78,7 @@ CREATE TABLE `st_usuarios` (
   `estado` varchar(50) DEFAULT NULL,
   `permisos` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=257 DEFAULT CHARSET=utf8;
 
 /*Data for the table `st_usuarios` */
 
@@ -135,7 +137,8 @@ insert  into `st_usuarios`(`id`,`nick`,`password`,`mail`,`nombre`,`apellidos`,`c
 (252,'martita','$argon2id$v=19$m=65536,t=4,p=1$MUUwOXNHdFppL3I2MzhTcw$aiWYUxEcy4GIYLOdlSJLblqgX33VD1mofOqL+4+Uw1Y','martita@mail.com','Martita','Pérez García','Zárágózá','NULL','2014-03-16','NULL','[\"usuario\"]'),
 (253,'martita2','$argon2id$v=19$m=65536,t=4,p=1$MW5hN3UwcG5UQXM4S1ZneQ$6UhDP4WMSQzb9cT7grkhgf19Wqmk5WsEzLn7fyJ9hqQ','martita2@mail.com','Martita2','Pérez García','Zárágózá','NULL','2014-03-16','NULL','[\"usuario\"]'),
 (254,'martita2','$argon2id$v=19$m=65536,t=4,p=1$NkJ0MmpUdmo0OGVsbkcwVA$ZEqy0VauNc6XIA2Y8jFp+GX5kONlgm9rEWIayEtjww0','martita2@mail.com','Martita2','Pérez García','Zárágózá','NULL','2014-03-16','NULL','[\"usuario\"]'),
-(255,'sarita','$argon2id$v=19$m=65536,t=4,p=1$dzdPOGQuSHdNWkIwOHgzRw$5G0YT21gUMtVijmSdCsc7f7XcbkWCwMWUUrSEUpkS44','sarita@mail.com','Sarita','Pérez García','Zárágózá','NULL','2015-03-16','NULL','[\"usuario\"]');
+(255,'sarita','$argon2id$v=19$m=65536,t=4,p=1$dzdPOGQuSHdNWkIwOHgzRw$5G0YT21gUMtVijmSdCsc7f7XcbkWCwMWUUrSEUpkS44','sarita@mail.com','Sarita','Pérez García','Zárágózá','NULL','2015-03-16','NULL','[\"usuario\"]'),
+(256,'Sara','$argon2id$v=19$m=65536,t=4,p=1$QkV6SGFESnNoZ3cwejcwLg$gCX2CNlDHCSCNmrqzMIsSNT2v3X4SVsMhB/xQ9XlWAY','sararuizalvarez@gmail.com','Sara','Ruiz Álvarez','Arnedo','NULL','1987-05-22','NULL','[]');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

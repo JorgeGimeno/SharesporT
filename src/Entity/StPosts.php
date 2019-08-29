@@ -37,18 +37,18 @@ class StPosts
     private $contenido;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_usuario", type="integer", nullable=false)
+     * 
+     * @ORM\ManyToOne(targetEntity="StUsuarios")
+     * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
      */
-    private $idUsuario;
+    private $usuario;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="id_deporte", type="integer", nullable=false)
+     * 
+     * @ORM\ManyToOne(targetEntity="StDeportes")
+     * @ORM\JoinColumn(name="id_deporte", referencedColumnName="id")
      */
-    private $idDeporte;
+    private $deporte;
 
     /**
      * @var int|null
@@ -100,7 +100,11 @@ class StPosts
 
     public function getIdDeporte(): ?int
     {
-        return $this->idDeporte;
+        if($this->deporte){
+            return $this->deporte->getId();
+        }else{
+            return null;
+        }
     }
 
     public function setIdDeporte(int $idDeporte): self
@@ -118,6 +122,30 @@ class StPosts
     public function setIdPostPadre(?int $idPostPadre): self
     {
         $this->idPostPadre = $idPostPadre;
+
+        return $this;
+    }
+
+    public function getUsuario(): ?StUsuarios
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario(?StUsuarios $usuario): self
+    {
+        $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    public function getDeporte(): ?StDeportes
+    {
+        return $this->deporte;
+    }
+
+    public function setDeporte(?StDeportes $deporte): self
+    {
+        $this->deporte = $deporte;
 
         return $this;
     }

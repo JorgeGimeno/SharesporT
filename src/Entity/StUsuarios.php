@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -94,6 +96,17 @@ class StUsuarios implements UserInterface
      * @ORM\Column(name="permisos", type="json", nullable=true, options={"default"="NULL"})
      */
     private $permisos = [];
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\StPosts", mappedBy="StUsuarios")
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
+
 
     public function getId(): ?string
     {
@@ -282,5 +295,36 @@ class StUsuarios implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|StPosts[]
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(StPosts $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setStUsuarios($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(StPosts $post): self
+    {
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
+            // set the owning side to null (unless already changed)
+            if ($post->getStUsuarios() === $this) {
+                $post->setStUsuarios(null);
+            }
+        }
+
+        return $this;
     }
 }
