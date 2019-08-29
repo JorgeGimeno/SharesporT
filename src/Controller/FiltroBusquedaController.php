@@ -14,6 +14,8 @@ class FiltroBusquedaController extends AbstractController
     public function index(Request $req)
     {
 
+        $form = $this->createForm(StPostsType::class);
+        $form->handleRequest($req);
 
         return $this->render('filtro_busqueda/index.html.twig', [
             'controller_name' => 'FiltroBusquedaController',

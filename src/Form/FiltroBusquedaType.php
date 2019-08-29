@@ -64,9 +64,9 @@ class FiltroBusquedaType extends AbstractType
         $listaUsuarios = $this->repoUsu->findAll();
 
         foreach($listaUsuarios as $valuesC){
-
+            if(!in_array($valuesC, $ciudades)){
                 $ciudades[$valuesC->getCiudad()] = $valuesC->getCiudad();
-
+            }
         }
 
         return $ciudades;
