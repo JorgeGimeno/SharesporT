@@ -29,12 +29,14 @@ class StPostsType extends AbstractType
         $listaDeportes = $this->repo->findAll();
 
         foreach($listaDeportes as $valuesN){
-            $deportes[$valuesN->getNombre()] = $valuesN->getId();
+            //$deportes[$valuesN->getNombre()] = $valuesN->getId();
+            $deportes[$valuesN->getNombre()] = $valuesN;
         }
 
         $builder
             ->add('contenido', TextareaType::class)
-            ->add('idDeporte', ChoiceType::class, [
+            //->add('idDeporte', ChoiceType::class, [
+            ->add('Deporte', ChoiceType::class, [    
                 'choices' => $deportes,
                 ]);
     }

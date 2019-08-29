@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +30,16 @@ class StDeportes
      */
     private $nombre = 'NULL';
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\StPosts", mappedBy="StDeportes")
+     */
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -41,6 +53,37 @@ class StDeportes
     public function setNombre(?string $nombre): self
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StPosts[]
+     */
+    public function getPosts(): Collection
+    {
+        return $this->posts;
+    }
+
+    public function addPost(StPosts $post): self
+    {
+        if (!$this->posts->contains($post)) {
+            $this->posts[] = $post;
+            $post->setStDeportes($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(StPosts $post): self
+    {
+        if ($this->posts->contains($post)) {
+            $this->posts->removeElement($post);
+            // set the owning side to null (unless already changed)
+            if ($post->getStDeportes() === $this) {
+                $post->setStDeportes(null);
+            }
+        }
 
         return $this;
     }

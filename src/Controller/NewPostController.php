@@ -25,7 +25,7 @@ class NewPostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) { 
 
             $newPost->setFechaHora(new DateTime());
-            $newPost->setIdUsuario($this->getUser()->getId());
+            $newPost->setUsuario($this->getUser());
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newPost);
