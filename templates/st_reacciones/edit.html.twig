@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit StReacciones{% endblock %}
+
+{% block body %}
+    <h1>Edit StReacciones</h1>
+
+    {{ include('st_reacciones/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('st_reacciones_index') }}">back to list</a>
+
+    {{ include('st_reacciones/_delete_form.html.twig') }}
+{% endblock %}

@@ -11,8 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class FiltroBusquedaType extends AbstractType
 {
-
-    private $logger;
     private $repoDepor;
     private $repoUsu;
 
@@ -20,7 +18,6 @@ class FiltroBusquedaType extends AbstractType
      StUsuariosRepository $repoUsu){
         $this->repoDepor=$repoDepor;
         $this->repoUsu=$repoUsu;
-        $this->logger=$logger;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -33,7 +30,7 @@ class FiltroBusquedaType extends AbstractType
             ->add('deportes', ChoiceType::class, [
                 'choices' => $deportes
             ])
-            ->add('ciudad', ChoiceType::class, [
+            ->add('ciudades', ChoiceType::class, [
                 'choices' => $ciudades
             ]);
     }
@@ -60,13 +57,13 @@ class FiltroBusquedaType extends AbstractType
 
     public function listarCiudades(){
 
-        $usuarios = array();
+        $ciudades = array();
         $listaUsuarios = $this->repoUsu->findAll();
 
         foreach($listaUsuarios as $valuesC){
-
+            if(!in_array($valuesC->getCiudad(), $ciudades)){
                 $ciudades[$valuesC->getCiudad()] = $valuesC->getCiudad();
-
+            }
         }
 
         return $ciudades;
