@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StReacciones index{% endblock %}
+
+{% block body %}
+    <h1>StReacciones index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Reaccion</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for st_reaccione in st_reacciones %}
+            <tr>
+                <td>{{ st_reaccione.id }}</td>
+                <td>{{ st_reaccione.reaccion }}</td>
+                <td>
+                    <a href="{{ path('st_reacciones_show', {'id': st_reaccione.id}) }}">show</a>
+                    <a href="{{ path('st_reacciones_edit', {'id': st_reaccione.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('st_reacciones_new') }}">Create new</a>
+{% endblock %}

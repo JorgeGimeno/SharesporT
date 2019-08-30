@@ -102,11 +102,27 @@ class StUsuarios implements UserInterface
      */
     private $posts;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\StReacciones", mappedBy="StUsuarios")
+     */
+    private $reacciones;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
+        $this->reacciones = new ArrayCollection();
     }
 
+
+    public function __toString()
+    {
+        if ($this->nombre && $this->apellidos)
+        {
+            return $this->nombre." ".$this->apellidos;
+        }else{
+            return "no name";
+        }
+    }
 
     public function getId(): ?string
     {
@@ -322,6 +338,37 @@ class StUsuarios implements UserInterface
             // set the owning side to null (unless already changed)
             if ($post->getStUsuarios() === $this) {
                 $post->setStUsuarios(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StReacciones[]
+     */
+    public function getReacciones(): Collection
+    {
+        return $this->reacciones;
+    }
+
+    public function addReaccione(StReacciones $reaccione): self
+    {
+        if (!$this->reacciones->contains($reaccione)) {
+            $this->reacciones[] = $reaccione;
+            $reaccione->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReaccione(StReacciones $reaccione): self
+    {
+        if ($this->reacciones->contains($reaccione)) {
+            $this->reacciones->removeElement($reaccione);
+            // set the owning side to null (unless already changed)
+            if ($reaccione->getUsuario() === $this) {
+                $reaccione->setUsuario(null);
             }
         }
 
