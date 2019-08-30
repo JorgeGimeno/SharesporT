@@ -40,6 +40,16 @@ class StDeportes
         $this->posts = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        if ($this->nombre)
+        {
+            return $this->nombre;
+        }else{
+            return "no name";
+        }
+    }
+
     public function getId(): ?int
     {
         return $this->id;

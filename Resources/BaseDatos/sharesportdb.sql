@@ -59,7 +59,25 @@ insert  into `st_posts`(`id`,`fecha_hora`,`contenido`,`id_usuario`,`id_deporte`,
 (5,'2019-08-22 13:45:46','30km de bici antes de currar, ^_^',207,2,-1),
 (6,'2019-08-22 13:52:59','Hoy día vago, corred vosotros que yo descanso.',201,1,-1),
 (7,'2019-08-29 09:55:14','Vamos a correr 100km!!!!!!!!!!!!!!!!!!!',255,1,-1),
-(8,'2019-08-29 10:04:30','El record lo tengo en 3 y medio :)',256,3,-1);
+(8,'2019-08-29 10:04:30','El record nadando lo tengo en 3km y medio en hora y 10 B)',256,3,-1);
+
+/*Table structure for table `st_reacciones` */
+
+DROP TABLE IF EXISTS `st_reacciones`;
+
+CREATE TABLE `st_reacciones` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) DEFAULT NULL,
+  `id_post` int(11) DEFAULT NULL,
+  `reaccion` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+/*Data for the table `st_reacciones` */
+
+insert  into `st_reacciones`(`Id`,`id_usuario`,`id_post`,`reaccion`) values 
+(1,256,8,'LIKE'),
+(2,255,8,'LIKE');
 
 /*Table structure for table `st_usuarios` */
 

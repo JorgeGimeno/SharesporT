@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}StReacciones{% endblock %}
+
+{% block body %}
+    <h1>StReacciones</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ st_reaccione.id }}</td>
+            </tr>
+            <tr>
+                <th>Reaccion</th>
+                <td>{{ st_reaccione.reaccion }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('st_reacciones_index') }}">back to list</a>
+
+    <a href="{{ path('st_reacciones_edit', {'id': st_reaccione.id}) }}">edit</a>
+
+    {{ include('st_reacciones/_delete_form.html.twig') }}
+{% endblock %}

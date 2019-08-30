@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,28 @@ class StPosts
      * @ORM\Column(name="id_post_padre", type="integer", nullable=true, options={"default"="-1"})
      */
     private $idPostPadre = '-1';
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\StReacciones", mappedBy="StPosts")
+     */
+    private $reacciones;
+
+    public function __construct()
+    {
+        $this->reacciones = new ArrayCollection();
+    }
+
+
+    public function __toString()
+    {
+        if ($this->contenido)
+        {
+            return $this->contenido;
+        }else{
+            return "No content on post.";
+        }
+    }
+
 
     public function getId(): ?int
     {
@@ -146,6 +170,37 @@ class StPosts
     public function setDeporte(?StDeportes $deporte): self
     {
         $this->deporte = $deporte;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|StReacciones[]
+     */
+    public function getReacciones(): Collection
+    {
+        return $this->reacciones;
+    }
+
+    public function addReaccione(StReacciones $reaccione): self
+    {
+        if (!$this->reacciones->contains($reaccione)) {
+            $this->reacciones[] = $reaccione;
+            $reaccione->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReaccione(StReacciones $reaccione): self
+    {
+        if ($this->reacciones->contains($reaccione)) {
+            $this->reacciones->removeElement($reaccione);
+            // set the owning side to null (unless already changed)
+            if ($reaccione->getPost() === $this) {
+                $reaccione->setPost(null);
+            }
+        }
 
         return $this;
     }
