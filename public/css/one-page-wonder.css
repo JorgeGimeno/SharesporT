@@ -1,313 +1,368 @@
-    /*!
+        /*!
  * Start Bootstrap - One Page Wonder v5.0.6 (https://startbootstrap.com/template-overviews/one-page-wonder)
  * Copyright 2013-2019 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/master/LICENSE)
  */
-    
-    body {
-        font-family: 'Lato';
-    }
-    
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: 'Catamaran';
-        font-weight: 800 !important;
-    }
-    
-    .btn-xl {
-        text-transform: uppercase;
-        padding: 1.5rem 3rem;
-        font-size: 0.9rem;
-        font-weight: 700;
-        letter-spacing: 0.1rem;
-    }
-    
-    .bg-black {
-        background-color: #000 !important;
-    }
-    
-    .rounded-pill {
-        border-radius: 5rem;
-    }
-    
-    .navbar-custom {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-        background-color: rgba(0, 0, 0, 1);
-    }
-    
-    .navbar-custom .navbar-brand {
-        text-transform: uppercase;
-        font-size: 1rem;
-        letter-spacing: 0.1rem;
-        font-weight: 700;
-    }
-    
-    .navbar-brand {
-        height: 40px;
-    }
-    
-    .navbar-custom .navbar-nav .nav-item .nav-link {
-        text-transform: uppercase;
-        font-size: 0.8rem;
-        font-weight: 700;
-        letter-spacing: 0.1rem;
-    }
-    
-    header.masthead {
-        position: relative;
-        overflow: hidden;
-        padding-top: 72px;
-        padding-bottom: 0;
-        margin-bottom: 75px;
-        background: -webkit-gradient(linear, left bottom, left top, from(#ff6a00), to(#ee0979));
-        background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: cover;
-    }
-    
-    header.masthead .masthead-content {
-        z-index: 1;
-        position: relative;
-    }
-    
-    header.masthead .masthead-content .masthead-heading {
-        font-size: 4rem;
-    }
-    
-    header.masthead .masthead-content .masthead-subheading {
-        font-size: 2rem;
-    }
-    
-    header.masthead .bg-circle {
-        z-index: 0;
-        position: absolute;
-        border-radius: 100%;
-        background: -webkit-gradient(linear, left bottom, left top, from(#ee0979), to(#ff6a00));
-        background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);
-    }
-    
-    header.masthead .bg-circle-1 {
-        height: 90rem;
-        width: 90rem;
-        bottom: -55rem;
-        left: -55rem;
-    }
-    
-    header.masthead .bg-circle-2 {
-        height: 50rem;
-        width: 50rem;
-        top: -25rem;
-        right: -25rem;
-    }
-    
-    header.masthead .bg-circle-3 {
-        height: 20rem;
-        width: 20rem;
-        bottom: -10rem;
-        right: 5%;
-    }
-    
-    header.masthead .bg-circle-4 {
-        height: 30rem;
-        width: 30rem;
-        top: -5rem;
-        right: 35%;
-    }
-    
-    @media (min-width: 992px) {
+        
+        body {
+            font-family: 'Lato';
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Catamaran';
+            font-weight: 800 !important;
+        }
+        
+        .btn-xl {
+            text-transform: uppercase;
+            padding: 1.5rem 3rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+        }
+        
+        textarea {
+            border-radius: 0;
+        }
+        
+        .bg-black {
+            background-color: #000 !important;
+        }
+        
+        .rounded-pill {
+            border-radius: 5rem;
+        }
+        
+        .navbar-custom {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            background-color: rgba(0, 0, 0, 1);
+        }
+        
+        .navbar-custom .navbar-brand {
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 0.1rem;
+            font-weight: 700;
+        }
+        
+        .navbar-brand {
+            height: 40px;
+        }
+        
+        .navbar-custom .navbar-nav .nav-item .nav-link {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1rem;
+        }
+        
         header.masthead {
+            position: relative;
+            overflow: hidden;
             padding-top: 72px;
             padding-bottom: 0;
             margin-bottom: 75px;
+            background: -webkit-gradient(linear, left bottom, left top, from(#ff6a00), to(#ee0979));
+            background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: scroll;
+            background-size: cover;
         }
+        
+        header.masthead .masthead-content {
+            z-index: 1;
+            position: relative;
+        }
+        
         header.masthead .masthead-content .masthead-heading {
-            font-size: 6rem;
-        }
-        header.masthead .masthead-content .masthead-subheading {
             font-size: 4rem;
         }
-    }
-    
-    .bg-primary {
-        background-color: #ee0979 !important;
-    }
-    
-    .btn-primary {
-        background-color: #ee0979;
-        border-color: #ee0979;
-    }
-    
-    .btn-primary:active,
-    .btn-primary:focus,
-    .btn-primary:hover {
-        background-color: #bd0760 !important;
-        border-color: #bd0760 !important;
-    }
-    
-    .btn-primary:focus {
-        -webkit-box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
-        box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
-    }
-    
-    .btn-secondary {
-        background-color: #ff6a00;
-        border-color: #ff6a00;
-    }
-    
-    .btn-secondary:active,
-    .btn-secondary:focus,
-    .btn-secondary:hover {
-        background-color: #cc5500 !important;
-        border-color: #cc5500 !important;
-    }
-    
-    .btn-secondary:focus {
-        -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
-        box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
-    }
-    /* registro.php */
-    
-    main {
-        padding-top: 135px;
-    }
-    
-    main.registro {
-        background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: cover;
-        padding-top: 135px;
-        padding-bottom: 75px;
-    }
-    
-    main.registro .form-control {
-        border: none;
-        border-bottom: 1px solid rgb(224, 9, 127);
-        border-radius: 0px;
-    }
-    
-    main.registro .form-group {
-        width: 100%;
-    }
-    
-    main.registro a.pdv-link {
-        color: black;
-        text-decoration: underline;
-    }
-    
-    main.registro .btn-primary {
-        background-color: #000000;
-        border-color: #495057;
-        transition: all 0.5s;
-    }
-    
-    main.registro .btn-primary:hover {
-        color: rgba(0, 0, 0, 0.9);
-        background-color: #fff !important;
-        border-color: #eee !important;
-    }
-    
-    main.registro select {
-        width: 33.3%;
-        height: 37px;
-        padding-left: 21px;
-    }
-    
-    main.registro select {
-        color: grey;
-    }
-    
-    main.registro label[for="fechaNac"] {
-        color: white;
-        text-transform: capitalize;
-        display: block;
-        text-align: center;
-        padding: 10px;
-        margin-bottom: 5px;
-        margin-top: 4px;
-        letter-spacing: 2px;
-        font-weight: 400;
-        font-size: 16px;
-    }
-    
-    main.registro .fechaLabelContainer {
-        background: rgba(255, 255, 255, 0.2)
-    }
-    /* login */
-    
-    main.logIn {
-        position: relative;
-        overflow: hidden;
-        padding-bottom: 7rem;
-        background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-attachment: scroll;
-        background-size: cover;
-        height: calc(100vh - 51px);
-        padding-top: 280px;
-    }
-    
-    main.new_post {
-        margin-top: 180px;
-        max-width: 600px;
-    }
-    /* index */
-    
-    main.index {
-        padding-top: 0;
-    }
-    
-    .navbar-custom .navbar-brand {
-        text-transform: uppercase;
-        font-family: 'Lexend Zetta', sans-serif;
-        font-size: 1.2rem;
-        letter-spacing: -2px;
-        font-weight: 100;
-    }
-    
-    .carousel-caption {
-        background: rgba(0, 0, 0, 0.6);
-    }
-    
-    .carousel-caption h5 {
-        font-family: 'Cinzel', serif;
-        font-weight: 400!important;
-        font-size: 34px;
-        color: white;
-    }
-    
-    .carousel-caption p {
-        margin-top: 0;
-        margin-bottom: 1rem;
-        color: white;
-        font-weight: 300;
-        font-size: 19px;
-    }
-    
-    .carousel-caption h5 span {
-        font-size: 56px;
-    }
-    /* sharesport main */
-    
-    main.sharesport_main div#post_filter {
-        height: 50px;
-        margin-bottom: 18px;
-        background: #CCC;
-    }
-    
-    main.sharesport_main div#new_post {
-        margin-bottom: 18px;
-    }
-    
-    main.sharesport_main .card.gedf-card {
-        margin-bottom: 10px;
-    }
+        
+        header.masthead .masthead-content .masthead-subheading {
+            font-size: 2rem;
+        }
+        
+        header.masthead .bg-circle {
+            z-index: 0;
+            position: absolute;
+            border-radius: 100%;
+            background: -webkit-gradient(linear, left bottom, left top, from(#ee0979), to(#ff6a00));
+            background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);
+        }
+        
+        header.masthead .bg-circle-1 {
+            height: 90rem;
+            width: 90rem;
+            bottom: -55rem;
+            left: -55rem;
+        }
+        
+        header.masthead .bg-circle-2 {
+            height: 50rem;
+            width: 50rem;
+            top: -25rem;
+            right: -25rem;
+        }
+        
+        header.masthead .bg-circle-3 {
+            height: 20rem;
+            width: 20rem;
+            bottom: -10rem;
+            right: 5%;
+        }
+        
+        header.masthead .bg-circle-4 {
+            height: 30rem;
+            width: 30rem;
+            top: -5rem;
+            right: 35%;
+        }
+        
+        @media (min-width: 992px) {
+            header.masthead {
+                padding-top: 72px;
+                padding-bottom: 0;
+                margin-bottom: 75px;
+            }
+            header.masthead .masthead-content .masthead-heading {
+                font-size: 6rem;
+            }
+            header.masthead .masthead-content .masthead-subheading {
+                font-size: 4rem;
+            }
+        }
+        
+        .bg-primary {
+            background-color: #ee0979 !important;
+        }
+        
+        .btn-primary {
+            background-color: #ee0979;
+            border-color: #ee0979;
+        }
+        
+        .btn-primary:active,
+        .btn-primary:focus,
+        .btn-primary:hover {
+            background-color: #bd0760 !important;
+            border-color: #bd0760 !important;
+        }
+        
+        .btn-primary:focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
+        }
+        
+        .btn-secondary {
+            background-color: #ff6a00;
+            border-color: #ff6a00;
+        }
+        
+        .btn-secondary:active,
+        .btn-secondary:focus,
+        .btn-secondary:hover {
+            background-color: #cc5500 !important;
+            border-color: #cc5500 !important;
+        }
+        
+        .btn-secondary:focus {
+            -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
+            box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
+        }
+        /* registro.php */
+        
+        main {
+            padding-top: 135px;
+            background: #eee;
+        }
+        
+        main.registro {
+            background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: scroll;
+            background-size: cover;
+            padding-top: 135px;
+            padding-bottom: 75px;
+        }
+        
+        main.registro .form-control {
+            border: none;
+            border-bottom: 1px solid rgb(224, 9, 127);
+            border-radius: 0px;
+        }
+        
+        main.registro .form-group {
+            width: 100%;
+        }
+        
+        main.registro a.pdv-link {
+            color: black;
+            text-decoration: underline;
+        }
+        
+        main.registro .btn-primary {
+            background-color: #000000;
+            border-color: #495057;
+            transition: all 0.5s;
+        }
+        
+        main.registro .btn-primary:hover {
+            color: rgba(0, 0, 0, 0.9);
+            background-color: #fff !important;
+            border-color: #eee !important;
+        }
+        
+        main.registro select {
+            width: 33.3%;
+            height: 37px;
+            padding-left: 21px;
+        }
+        
+        main.registro select {
+            color: grey;
+        }
+        
+        main.registro label[for="fechaNac"] {
+            color: white;
+            text-transform: capitalize;
+            display: block;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 5px;
+            margin-top: 4px;
+            letter-spacing: 2px;
+            font-weight: 400;
+            font-size: 16px;
+        }
+        
+        main.registro .fechaLabelContainer {
+            background: rgba(255, 255, 255, 0.2)
+        }
+        /* login */
+        
+        main.logIn {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 7rem;
+            background: linear-gradient(0deg, #ff6a00 0%, #ee0979 100%);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: scroll;
+            background-size: cover;
+            height: calc(100vh - 51px);
+            padding-top: 280px;
+        }
+        
+        main.new_post {
+            margin-top: 180px;
+            max-width: 600px;
+        }
+        /* index */
+        
+        main.index {
+            padding-top: 0;
+        }
+        
+        .navbar-custom .navbar-brand {
+            text-transform: uppercase;
+            font-family: 'Lexend Zetta', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: -2px;
+            font-weight: 100;
+        }
+        
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .carousel-caption h5 {
+            font-family: 'Cinzel', serif;
+            font-weight: 400!important;
+            font-size: 34px;
+            color: white;
+        }
+        
+        .carousel-caption p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 300;
+            font-size: 19px;
+        }
+        
+        .carousel-caption h5 span {
+            font-size: 56px;
+        }
+        /* sharesport main */
+        
+        main.sharesport_main div#post_filter {
+            height: 50px;
+            margin-bottom: 18px;
+            background: #CCC;
+        }
+        
+        main.sharesport_main div#new_post {
+            margin-bottom: 18px;
+        }
+        
+        main.sharesport_main .card.gedf-card {
+            margin-bottom: 10px;
+            background: #eee;
+        }
+        
+        main.sharesport_main>.card.gedf-card {
+            margin-bottom: 10px;
+            background: #eee;
+            border: none;
+        }
+        
+        .card {
+            border-radius: 0px;
+        }
+        
+        .card-header {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        div#posts {
+            padding: 12px 11px;
+        }
+        
+        .example-wrapper {
+            box-shadow: 0px 0px 39px #ccc;
+        }
+        
+        .btn-group.deportes {
+            position: relative;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            vertical-align: middle;
+            bottom: 12px;
+            left: 15px;
+        }
+        
+        .btn-group.deportes select {
+            padding: 10px 30px;
+            color: black;
+            background: #ddd;
+            border: none;
+        }
+        
+        .btn.btn-primary.publicar {
+            margin-bottom: 5px;
+            margin-right: 17px;
+            position: absolute;
+            right: 10px;
+            bottom: 7px;
+            padding: 7px 39px;
+            background: #e03a3a;
+            border-radius: 0;
+        }
