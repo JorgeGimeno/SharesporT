@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\DatosFiltro;
 use App\Form\FiltroBusquedaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,37 +15,21 @@ class FiltroBusquedaController extends AbstractController
      */
     public function index(Request $req)
     {
+        $datos = new datosFiltro();
 
-        $ciudadObtenida;
-        $deporteObtenidad;
-        $bandera = false;
-
-        $form = $this->createForm(FiltroBusquedaType::class);
+        $form = $this->createForm(FiltroBusquedaType::class, $datos);
         $form->handleRequest($req);
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $bandera = true;
 
-            $deporte = $req->query->get('deportes');
-            $ciudad = $req->query->get('ciudades');
 
-            $ciudadObtenidad = "entro if ciudad submit";
-            $deporteObtenidad = "entro if deporte submit";
+            return $this->redirectToRoute('new_post');
 
-            return $this->redirectToRoute('filtro_busqueda');
-
-        }
-
-        if(!$bandera){
-            $ciudadObtenidad = "esperando submit ciudad";
-            $deporteObtenidad = "esperando submit deporte";
         }
 
         return $this->render('filtro_busqueda/index.html.twig', [
             'form' => $form->createView(),
-            'deporte' => $deporteObtenidad,
-            'ciudad' => $ciudadObtenidad,
         ]);
     }
 }
