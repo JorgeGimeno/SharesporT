@@ -29,9 +29,11 @@ class FiltroBusquedaType extends AbstractType
         $builder
             ->add('deportes', ChoiceType::class, [
                 'choices' => $deportes
+                    
             ])
             ->add('ciudades', ChoiceType::class, [
                 'choices' => $ciudades
+                    
             ]);
     }
 
@@ -48,7 +50,12 @@ class FiltroBusquedaType extends AbstractType
         $listaDeportes = $this->repoDepor->findAll();
 
         foreach($listaDeportes as $valuesN){
-            $deportes[$valuesN->getNombre()] = $valuesN->getId();
+            if(empty($deportes)){
+                $deportes['Seleccione un deporte'] = 0;
+                $deportes[$valuesN->getNombre()] = $valuesN->getId();
+            } else {
+                $deportes[$valuesN->getNombre()] = $valuesN->getId();
+            }
         }
 
         return $deportes;
@@ -61,7 +68,10 @@ class FiltroBusquedaType extends AbstractType
         $listaUsuarios = $this->repoUsu->findAll();
 
         foreach($listaUsuarios as $valuesC){
-            if(!in_array($valuesC->getCiudad(), $ciudades)){
+            if(empty($ciudades)){
+                $ciudades['Seleccione una ciudad'] = 0;
+                $ciudades[$valuesC->getCiudad()] = $valuesC->getCiudad();
+            } else {
                 $ciudades[$valuesC->getCiudad()] = $valuesC->getCiudad();
             }
         }
