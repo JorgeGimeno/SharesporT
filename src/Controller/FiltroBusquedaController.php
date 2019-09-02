@@ -39,8 +39,9 @@ class FiltroBusquedaController extends AbstractController
             }
             
             //return $this->redirectToRoute('new_post');
+            var_dump($listadoPostsFiltrados);
 
-        }
+        } 
 
         return $this->render('filtro_busqueda/index.html.twig', [
             'form' => $form->createView(),
