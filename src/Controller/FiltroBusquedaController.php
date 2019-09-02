@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FiltroBusquedaController extends AbstractController
 {
     /**
-     * @Route("/filtro_busqueda", name="filtro_busqueda")
+     * @Route("/post_filter", name="post_filter")
      */
     public function index(Request $req, StPostsRepository $repoPosts)
     {
@@ -28,17 +28,19 @@ class FiltroBusquedaController extends AbstractController
             $deporteSeleccionado = $form["deportes"]->getData();
             $ciudadSeleccionada = $form["ciudades"]->getData();
 
-            if($deporteSeleccionado != 0 && $ciudadSeleccionada != 0){
-                
-            }
-            if($deporteSeleccionado == 0 && $ciudadSeleccionada != 0){
-                $listadoPostsFiltrados = $repoPosts->postsDeporte($deporteSeleccionado, 5);
-            }
-            if($deporteSeleccionado != 0 && $ciudadSeleccionada == 0){
-
+            if($ciudadSeleccionada != "" || $deporteSeleccionado != 0){
+                if($deporteSeleccionado != 0 && $ciudadSeleccionada != ""){
+                    $listadoPostsFiltrados = $repoPosts->postsCiudadDeporte($ciudadSeleccionada, $deporteSeleccionado, 5);
+                }
+                if($deporteSeleccionado == 0 && $ciudadSeleccionada != ""){
+                    $listadoPostsFiltrados = $repoPosts->postsCiudad($ciudadSeleccionada, 5);
+                }
+                if($deporteSeleccionado != 0 && $ciudadSeleccionada == 0 && $ciudadSeleccionada == ""){
+                    $listadoPostsFiltrados = $repoPosts->postsDeporte($deporteSeleccionado, 5);
+                }
             }
             
-            //return $this->redirectToRoute('new_post');
+            return $this->redirectToRoute('filtro_busqueda');
 
         }
 
