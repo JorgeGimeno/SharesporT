@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\StPosts;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method StPosts|null find($id, $lockMode = null, $lockVersion = null)
@@ -48,18 +49,45 @@ class StPostsRepository extends ServiceEntityRepository
     }
     */
 
+    // Devuelve los post paginados
+    public function paginate($query, $page = 1, $limit = 3)
+    {
+        $paginator = new Paginator($query);
+
+        $paginator->getQuery()
+            ->setFirstResult($limit * ($page - 1)) // Offset
+            ->setMaxResults($limit); // Limit
+
+        return $paginator;  
+    }
+
+    // Devuelve un array de los últimos $numeroPosts publicados
+    public function postsOrdenadosPorFecha($currentPage = 1, $limit = 3)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.fechaHora', 'DESC')
+            ->getQuery()
+        ;
+        
+        $paginator = $this->paginate($query, $currentPage, $limit);
+
+        return array(
+            'paginator' => $paginator,
+            'query' => $query
+        );
+    }
 
 
     // Devuelve un array de los últimos $numeroPosts publicados
-    public function postsOrdenadosPorFecha(int $numeroPosts)
-    {
-        return $this->createQueryBuilder('p')
-            ->orderBy('p.fechaHora', 'DESC')
-            ->setMaxResults($numeroPosts)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+    // public function postsOrdenadosPorFecha(int $numeroPosts)
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->orderBy('p.fechaHora', 'DESC')
+    //         ->setMaxResults($numeroPosts)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 
 
 
