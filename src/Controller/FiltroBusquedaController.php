@@ -39,8 +39,6 @@ class FiltroBusquedaController extends AbstractController
                     $listadoPostsFiltrados = $repoPosts->postsDeporte($deporteSeleccionado, 5);
                 }
             }
-            
-            return $this->redirectToRoute('filtro_busqueda');
 
         }
 
