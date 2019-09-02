@@ -8,13 +8,15 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/main", name="main")
+     * @Route("/main/{currentPage}", name="main")
+     * @IsGranted("ROLE_USER")
      */
-    public function index()
+    public function index($currentPage = 1)
     {
       
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
+            'currentPage' => $currentPage
         ]);
     }
 }
