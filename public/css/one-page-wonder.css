@@ -364,7 +364,7 @@ div#posts {
 }
 
 .btn-group.deportes select {
-    padding: 10px 30px;
+    padding: 5px 30px;
     color: black;
     background: #ddd;
     border: none;
@@ -379,4 +379,24 @@ div#posts {
     padding: 7px 39px;
     background: #e03a3a;
     border-radius: 0;
+}
+
+ul.list-group.reacciones,
+ul.list-group.rrss {
+    flex-direction: row;
+}
+
+.fa:before {
+    font-size: 22px;
+}
+
+ul.rrss .list-group-item,
+ul.reacciones .list-group-item {
+    position: relative;
+    display: block;
+    margin-bottom: -1px;
+    background-color: white;
+    /* padding-right: 12px; */
+    border: none;
+    padding: 8px 14px 8px 0;
 }
