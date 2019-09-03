@@ -12,15 +12,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FiltroBusquedaController extends AbstractController
 {
     /**
-     * @Route("/filtro_busqueda", name="filtro_busqueda")
+     * @Route("/post_filter", name="post_filter")
      */
     public function index(Request $req, StPostsRepository $repoPosts)
     {
 
         $listadoPostsFiltrados = array(); 
-        $datos = new datosFiltro();
 
-        $form = $this->createForm(FiltroBusquedaType::class, $datos);
+        $form = $this->createForm(FiltroBusquedaType::class);
         $form->handleRequest($req);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -28,23 +27,35 @@ class FiltroBusquedaController extends AbstractController
             $deporteSeleccionado = $form["deportes"]->getData();
             $ciudadSeleccionada = $form["ciudades"]->getData();
 
-            if($deporteSeleccionado != 0 && $ciudadSeleccionada != 0){
-                
+            if($ciudadSeleccionada != "" || $deporteSeleccionado != 0){
+                if($deporteSeleccionado != 0 && $ciudadSeleccionada != ""){
+                    $listadoPostsFiltrados = $repoPosts->postsCiudadDeporte($ciudadSeleccionada, $deporteSeleccionado, 5);
+                }
+                if($deporteSeleccionado == 0 && $ciudadSeleccionada != ""){
+                    $listadoPostsFiltrados = $repoPosts->postsCiudad($ciudadSeleccionada, 5);
+                }
+                if($deporteSeleccionado != 0 && $ciudadSeleccionada == 0 && $ciudadSeleccionada == ""){
+                    $listadoPostsFiltrados = $repoPosts->postsDeporte($deporteSeleccionado, 5);
+                }
             }
-            if($deporteSeleccionado == 0 && $ciudadSeleccionada != 0){
-                $listadoPostsFiltrados = $repoPosts->postsDeporte($deporteSeleccionado, 5);
-            }
-            if($deporteSeleccionado != 0 && $ciudadSeleccionada == 0){
 
-            }
-            
-            //return $this->redirectToRoute('new_post');
-
-        }
+        } 
 
         return $this->render('filtro_busqueda/index.html.twig', [
             'form' => $form->createView(),
             'listaPosts' => $listadoPostsFiltrados,
         ]);
+    }
+
+
+    /**
+     * @Route("/postsFiltered/{lista}", name="postsFiltered")
+     */
+    public function postsFiltrados(array $lista)
+    {
+        return $this->render('filtro_busqueda/postsFiltro.html.twig', [
+            'arrayPost' => $lista,
+        ]);
+
     }
 }

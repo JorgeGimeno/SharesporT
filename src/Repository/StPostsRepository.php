@@ -62,6 +62,9 @@ class StPostsRepository extends ServiceEntityRepository
     }
 
     // Devuelve un array de los últimos $numeroPosts publicados
+    /**
+     * @return StPosts[] Returns an array of StPosts objects
+    */
     public function postsOrdenadosPorFecha($currentPage = 1, $limit = 3)
     {
         $query = $this->createQueryBuilder('p')
@@ -95,7 +98,7 @@ class StPostsRepository extends ServiceEntityRepository
     public function postsDeporte(int $id_deporte, int $numeroPosts)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.idDeporte = :id_d')
+            ->andWhere('s.deporte = :id_d')
             ->setParameter('id_d',$id_deporte)
             ->orderBy('s.fechaHora', 'DESC')
             ->setMaxResults($numeroPosts)
@@ -103,7 +106,37 @@ class StPostsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    
+     // Devuelve un array de los últimos $numeroPosts publicados de la ciudad con el nombre $ciudad
+     public function postsCiudad(string $ciudad, int $numeroPosts)
+     {
+         return $this->createQueryBuilder('s')
+             ->andWhere('u.ciudad = :ciudad')
+             ->setParameter('ciudad',$ciudad)
+             ->join('s.usuario', 'u')
+             ->orderBy('s.fechaHora', 'DESC')
+             ->setMaxResults($numeroPosts)
+             ->getQuery()
+             ->getResult()
+         ;
+     }
 
+     // Devuelve un array de los últimos $numeroPosts publicados de la ciudad con el nombre $ciudad
+     // y con el id $id_deporte
+     public function postsCiudadDeporte(string $ciudad, int $id_deporte, int $numeroPosts)
+     {
+         return $this->createQueryBuilder('s')
+             ->andWhere('u.ciudad = :ciudad')
+             ->andWhere('s.deporte = :id_d')
+             ->setParameter('ciudad',$ciudad)
+             ->setParameter('id_d', $id_deporte)
+             ->join('s.usuario', 'u')
+             ->orderBy('s.fechaHora', 'DESC')
+             ->setMaxResults($numeroPosts)
+             ->getQuery()
+             ->getResult()
+         ;
+     }
 
     //Devuelve un array de los últimos $numeroPosts publicados por el usuario con id $id_usuario
     public function postsDeUsuario(int $id_usuario, int $numeroPosts)
@@ -117,7 +150,6 @@ class StPostsRepository extends ServiceEntityRepository
         ->getResult()
     ;
     }
-
 
     //Devuelve el número de post que ha publicado el usuario de id $id_usuario
     public function numeroDePostDeUsuario(int $id_usuario)
