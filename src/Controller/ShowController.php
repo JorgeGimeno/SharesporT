@@ -47,11 +47,18 @@ class ShowController extends AbstractController
 
     $maxPages = ceil($post['paginator']->count() / $limit);
 
+    $tablaReacciones = [];
+    foreach ($postResult as $p){
+        array_push($tablaReacciones, $p->cuentaReacciones());
+    }
+    
+
     return $this->render('st_posts/show.html.twig', array(
             'arrayPost' => $postResult,
             'maxPages'=>$maxPages,
             'thisPage' => $currentPage,
-            'all_items' => $postQueryCompleta
+            'all_items' => $postQueryCompleta,
+            'reacciones' => $tablaReacciones
         ) );
     }
 

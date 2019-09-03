@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\StPosts;
+use App\Entity\StUsuarios;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,7 +14,7 @@ class StReacciones
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
+     * @ORM\GeneratedValue("IDENTITY")
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -23,13 +25,13 @@ class StReacciones
     private $reaccion;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\StUsuarios", inversedBy="reacciones")
+     * @ORM\ManyToOne(targetEntity="StUsuarios", inversedBy="reacciones")
      * @ORM\JoinColumn(name="id_usuario", referencedColumnName="id")
      */
     private $usuario;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\StPosts", inversedBy="reacciones")
+     * @ORM\ManyToOne(targetEntity="StPosts", inversedBy="reacciones")
      * @ORM\JoinColumn(name="id_post", referencedColumnName="id")
      */
     private $post;

@@ -62,6 +62,9 @@ class StPostsRepository extends ServiceEntityRepository
     }
 
     // Devuelve un array de los últimos $numeroPosts publicados
+    /**
+     * @return StPosts[] Returns an array of StPosts objects
+    */
     public function postsOrdenadosPorFecha($currentPage = 1, $limit = 3)
     {
         $query = $this->createQueryBuilder('p')

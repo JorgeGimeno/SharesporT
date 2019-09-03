@@ -48,4 +48,15 @@ class StReaccionesRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function recuentoDeReacciones ()
+    {
+        return $this->createQueryBuilder('s')
+        ->addSelect('id_post, reaccion, COUNT(reaccion)')
+        ->addGroupBy('reaccion')
+        ->setMaxResults(1000)
+        ->getQuery()
+        ->getResult()
+    ;    
+    }
 }

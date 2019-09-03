@@ -4,80 +4,65 @@
 
 {% block body %}
 <main class="editar">
-        <div class="container">
-            <div class="row">
-                
-                <div class="col-md-4">
-                    {{ form_start(form)}}
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name" class="sr-only">Nombre</label>
-                                Nombre: {{ form_widget(form.nombre)}}
-                            </div>
+    <div class="container w-75 mx-auto">
+        <div class="row">
+            <div class="col-6">
+                <div class="container mx-auto">
+                {{ form_start(form)}}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name" class="sr-only">Nombre</label> Nombre: {{ form_widget(form.nombre)}}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="sr-only" for="apellidos">Apellidos</label> Apellidos: {{ form_widget(form.apellidos)}} {# <input type="email" class="form-control" id="apellidos" placeholder="Apellidos"> #}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fechaNac"></label> Fecha Nacimiento: {{ form_widget(form.fechaNac)}} {# <input type="email" class="form-control" id="apellidos" placeholder="Apellidos"> #}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="sr-only" for="Ciudad">Ciudad</label> Ciudad: {{ form_widget(form.ciudad)}} {# <input type="text" class="form-control" id="Ciudad" placeholder="Ciudad"> #}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="sr-only" for="inputEmail4">Email</label> E-Mail: {{ form_widget(form.mail)}} {# <input type="email" class="form-control" id="inputEmail4" placeholder="Email"> #}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group pr-3 w-50">
+                        <label class="sr-only" for="nick">Nick</label> Nickname: {{ form_widget(form.nick)}} {# <input type="text" class="form-control" id="nick" placeholder="Nick"> #}
+                    </div>
+                </div>
+                {#
+                <div class="form-row">
+                    <div class="form-group  w-50">
+                        <div class="fotoLabelContainer">
+                            <label for="inputPhoto">Foto de Perfil</label>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="sr-only" for="apellidos">Apellidos</label>
-                                Apellidos: {{ form_widget(form.apellidos)}}
-                                {# <input type="email" class="form-control" id="apellidos" placeholder="Apellidos"> #}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">                                
-                                <label for="fechaNac"></label>                                
-                                Fecha Nacimiento: {{ form_widget(form.fechaNac)}}
-                                {# <input type="email" class="form-control" id="apellidos" placeholder="Apellidos"> #}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="sr-only" for="Ciudad">Ciudad</label>
-                                Ciudad: {{ form_widget(form.ciudad)}}
-                                {# <input type="text" class="form-control" id="Ciudad" placeholder="Ciudad"> #}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label class="sr-only" for="inputEmail4">Email</label>
-                                E-Mail: {{ form_widget(form.mail)}}
-                                {# <input type="email" class="form-control" id="inputEmail4" placeholder="Email"> #}
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group pr-3 w-50">
-                                <label class="sr-only" for="nick">Nick</label>
-                                Nickname: {{ form_widget(form.nick)}}
-                                {# <input type="text" class="form-control" id="nick" placeholder="Nick"> #}
-                            </div>
-                        </div>
-                        {# <div class="form-row">
-                            <div class="form-group  w-50">
-                                <div class="fotoLabelContainer">
-                                    <label for="inputPhoto">Foto de Perfil</label>
-                                </div>                               
-                                 {{ form_widget(form.foto) }}  #}
-                                {# <input type="password" class="form-control" id="inputPassword4" placeholder="Password"> #}
-                         {#    </div>
-                        </div> #}
-                        <div class="form-row">
-                            <div class="form-group  w-50">
-                                <label class="sr-only" for="inputPassword">Password</label>
-                                 Contraseña: {{ form_widget(form.password)}}
-                                {# <input type="password" class="form-control" id="inputPassword4" placeholder="Password"> #}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-check mb-3 text-center">
-                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                <label class="form-check-label text-white" for="defaultCheck1">Aceptar <a class="pdv-link" href="text-dark">política de privacidad.</a></label>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block">Actualizar Datos</button>
-                    {{ form_end(form)}}
+                        {{ form_widget(form.foto) }} #} {# <input type="password" class="form-control" id="inputPassword4" placeholder="Password"> #} {# </div>
+                </div> #}
+                <div class="form-row">
+                    <div class="form-group w-50">
+                        <label class="sr-only" for="inputPassword">Password</label> Contraseña: {{ form_widget(form.password)}} {# <input type="password" class="form-control" id="inputPassword4" placeholder="Password"> #}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check mb-3 text-center">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label text-white" for="defaultCheck1">Aceptar <a class="pdv-link" href="text-dark">política de privacidad.</a></label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Actualizar Datos</button> {{ form_end(form)}}
                     <p class="text-center text-white mt-4 ">Al registrarte, aceptas nuestras Condiciones. Obtén más información sobre cómo recopilamos, usamos y compartimos tus datos en la Política de datos, así como el uso que hacemos de las cookies y tecnologías similares en la Política de
                         cookies.
                     </p>
-                    </div>
                 </div>
             </div>
-    </main>
+        </div>
+</main>
 {% endblock %}
