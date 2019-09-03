@@ -3,11 +3,21 @@
 {% block body %}
 
     <div class="container">
-        {{ form_start(form, {'action':'/post_filter'}) }}
-            {{form_widget(form.deportes)}}
-            {{form_widget(form.ciudades)}}
-            <button onclick="ns.cargarPostsFiltro({{listaPosts}})" type="submit" class="btn btn-primary">Buscar</button>
+        {{ form_start(form) }}
+            {{form_widget(form.deportes, { 'id': 'deporteSelected' })}}
+            {{form_widget(form.ciudades, { 'id': 'ciudadSelected' })}}            
         {{ form_end(form) }}
+        <button onclick="enviarFiltros()" class="btn btn-primary">Buscar Posts</button>
+        <button onclick="ns.postCargarPagina({{1}})" class="btn btn-secondary">Quitar Filtro</button>
     <div>
+    <script>
+        function enviarFiltros(){
+            deporte = document.getElementById('deporteSelected');
+            ciudad = document.getElementById('ciudadSelected');
+
+            ns.cargarPostsFiltro(deporte.value, ciudad.value);
+        }
+
+    </script>
 
 {% endblock %}
