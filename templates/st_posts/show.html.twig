@@ -42,10 +42,10 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-7 pl-4">
                     <ul class="list-group reacciones">
-                        <li class="list-group-item"><a href="#" class="card-link" title="Mola"><i class="fa fa-trophy text-warning"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['LIKE']}})</sup></a></li>
-                        <li class="list-group-item"><a href="#" class="card-link" title="No me gusta"><i class="fa fa-frown-o text-danger"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DISLIKE']}})</sup></a></li>
-                        <li class="list-group-item"><a href="#" class="card-link" title="Descansa"><i class="fa fa-bed"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DESCANSA']}})</sup></a></li>
-                        <li class="list-group-item"><a href="#" class="card-link" title="Te lo has flipado"><i class="fa fa-rocket text-success"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['FLIPADO']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/LIKE" class="card-link" title="Mola"><i class="fa fa-trophy text-warning"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['LIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DISLIKE" class="card-link" title="No me gusta"><i class="fa fa-frown-o text-danger"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DISLIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DESCANSA" class="card-link" title="Descansa"><i class="fa fa-bed"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DESCANSA']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/FLIPADO" class="card-link" title="Te lo has flipado"><i class="fa fa-rocket text-success"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['FLIPADO']}})</sup></a></li>
                     </ul>
                 </div>
                 <div class="col-5">
