@@ -37,7 +37,7 @@
             {{ p.contenido }}
         </p>
     </div>
-    <div class="card-footer bg-white">
+    <div class="card-footer bg-white p-1">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-8">
@@ -51,13 +51,13 @@
                 <div class="col-4">
                     <ul class="list-group rrss">
                         <li class="list-group-item">
-                            <a href="https://twitter.com/share?text={{p.usuario.nombre}}%20ha%20posteado%20en%20SharesporT%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}%0A%23SharesporT%20" class="card-link "> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                            <a href="https://twitter.com/share?text={{p.usuario.nombre}}%20ha%20posteado%20en%20SharesporT%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}%0A%23SharesporT%20" title="Compartir en Twitter" class="card-link"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
                         </li>
                         <li class="list-group-item">
-                            <a href="https://facebook.com/share" class="card-link "> <i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                            <a href="https://facebook.com/share" title="Compartir en Facebook" class="card-link"> <i class="fa fa-facebook-square" aria-hidden="true"></i></a>
                         </li>
                         <li class="list-group-item">
-                            <a href="https://api.whatsapp.com/send?text={{p.usuario.nombre}}%20ha%20posteado%20en%20www.SharesporT.com%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}" class="card-link"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a>
+                            <a href="https://api.whatsapp.com/send?text={{p.usuario.nombre}}%20ha%20posteado%20en%20www.SharesporT.com%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}" title="Compartir en WhatsApp" class="card-link"><i class="fa fa-whatsapp text-success" aria-hidden="true"></i></a>
                         </li>
                     </ul>
                 </div>
