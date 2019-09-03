@@ -19,14 +19,13 @@
             });            
         },
 
-        cargarPostsFiltro:function(lista){
-            if(lista instanceof Array){
-                $.ajax({ url: "/postsFiltered/" + lista,
-                    success: function(htmlRecibido){
-                        $('#post_list').html(htmlRecibido);
-                    }
-                });
-            }
+        cargarPostsFiltro:function(deporte, ciudad){
+            $.ajax({ url: "/postsFiltered/" + deporte + "/" + ciudad,
+                success: function(htmlRecibido){
+                    $('#post_list').html(htmlRecibido);
+                }
+            });
+            
         }
     }
 

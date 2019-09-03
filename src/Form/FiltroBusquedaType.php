@@ -51,7 +51,7 @@ class FiltroBusquedaType extends AbstractType
 
         foreach($listaDeportes as $valuesN){
             if(empty($deportes)){
-                $deportes['Seleccione un deporte'] = 0;
+                $deportes['Selecciona un deporte'] = 0;
                 $deportes[$valuesN->getNombre()] = $valuesN->getId();
             } else {
                 $deportes[$valuesN->getNombre()] = $valuesN->getId();
@@ -69,7 +69,7 @@ class FiltroBusquedaType extends AbstractType
 
         foreach($listaUsuarios as $valuesC){
             if(empty($ciudades)){
-                $ciudades['Seleccione una ciudad'] = 0;
+                $ciudades['Selecciona una ciudad'] = "0";
                 $ciudades[$valuesC->getCiudad()] = $valuesC->getCiudad();
             } else {
                 $ciudades[$valuesC->getCiudad()] = $valuesC->getCiudad();
