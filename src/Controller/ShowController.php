@@ -10,6 +10,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ShowController extends AbstractController
 {
+
+
+
+
     /**
      * @Route("/listadoPost/{num}", name="listadoPost", methods={"GET"})
      */
@@ -20,13 +24,19 @@ class ShowController extends AbstractController
         $user = $r->findOneBy(['id' => $idUsuario]);*/
         
 
-        $p = $this->getDoctrine()->getRepository(StPosts::class);
-        $postResult = $p->postsOrdenadosPorFecha(5);
+        $pr = $this->getDoctrine()->getRepository(StPosts::class);
+        $arrayDePost = $pr->postsOrdenadosPorFecha(5);
 
+        $tablaReacciones = [];
+        foreach ($arrayDePost as $p){
+            array_push($tablaReacciones, $p->cuentaReacciones());
+        }
+        
+        
 
         return $this->render('st_posts/show.html.twig', [
-            'arrayPost' => $postResult,
-            //'usuario' => $user,
+            'arrayPost' => $arrayDePost,
+            'reacciones' => $tablaReacciones,
             
         ]);
     }    
