@@ -10,17 +10,35 @@
 {% block javascripts %}
 <script>
    
+    var ns = {
+        postCargarPagina:function(pagina){
+            $.ajax({ url: "/listadoPost/" + pagina,
+                success: function(htmlRecibido){
+                    $('#post_list').html(htmlRecibido);
+                }
+            });            
+        },
+
+        cargarPostsFiltro:function(lista){
+            if(lista instanceof Array){
+                $.ajax({ url: "/postsFiltered/" + lista,
+                    success: function(htmlRecibido){
+                        $('#post_list').html(htmlRecibido);
+                    }
+                });
+            }
+        }
+    }
+
     $(document).ready(function(){
         $.ajax({ url: "/userpanel",
         success: function(htmlRecibido){
      
            $('#user_panel').append(htmlRecibido);
         }});
-        $.ajax({ url: "/listadoPost/5",
-        success: function(htmlRecibido){
-           
-           $('#post_list').append(htmlRecibido);
-        }});
+
+        ns.postCargarPagina({{currentPage}});
+
         $.ajax({ url: "/new_post",
         success: function(htmlRecibido){
    
@@ -46,7 +64,7 @@
 
 <main class="sharesport_main">
     <div class="container-fluid gedf-wrapper">
-        <div class="row">
+        <div class="row w-75 mx-auto">
             <section id='user_panel' class="user_panel col-md-3">
                  {# cargara por ajax el user_panel #}
              </section>

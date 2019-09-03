@@ -10,35 +10,56 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ShowController extends AbstractController
 {
+    // /**
+    //  * @Route("/listadoPost/{num}", name="listadoPost", methods={"GET"})
+    //  */
+    // public function probarListadoPostUsuario(int $num)
+    // {
+    //     /*
+    //     $r = $this->getDoctrine()->getRepository(StUsuarios::class);
+    //     $user = $r->findOneBy(['id' => $idUsuario]);*/
+        
+
+    //     $p = $this->getDoctrine()->getRepository(StPosts::class);
+    //     $postResult = $p->postsOrdenadosPorFecha(5);
 
 
-
+    //     return $this->render('st_posts/show.html.twig', [
+    //         'arrayPost' => $postResult,
+    //         //'usuario' => $user,
+            
+    //     ]);
+    // } 
+    
 
     /**
-     * @Route("/listadoPost/{num}", name="listadoPost", methods={"GET"})
-     */
-    public function probarListadoPostUsuario(int $num)
+    * @Route("/listadoPost/{currentPage}", name="listadoPost", methods={"GET"})
+    */
+    public function indexAction($currentPage = 1)
     {
-        /*
-        $r = $this->getDoctrine()->getRepository(StUsuarios::class);
-        $user = $r->findOneBy(['id' => $idUsuario]);*/
-        
 
-        $pr = $this->getDoctrine()->getRepository(StPosts::class);
-        $arrayDePost = $pr->postsOrdenadosPorFecha(5);
+    $em = $this->getDoctrine()->getManager();
 
-        $tablaReacciones = [];
-        foreach ($arrayDePost as $p){
-            array_push($tablaReacciones, $p->cuentaReacciones());
-        }
-        
-        
+    $limit = 3;
+    $post = $em->getRepository(StPosts::class)->postsOrdenadosPorFecha($currentPage, $limit);
+    $postResult = $post['paginator'];
+    $postQueryCompleta =  $post['query'];
 
-        return $this->render('st_posts/show.html.twig', [
-            'arrayPost' => $arrayDePost,
-            'reacciones' => $tablaReacciones,
-            
-        ]);
-    }    
+    $maxPages = ceil($post['paginator']->count() / $limit);
+
+    $tablaReacciones = [];
+    foreach ($postResult as $p){
+        array_push($tablaReacciones, $p->cuentaReacciones());
+    }
+    
+
+    return $this->render('st_posts/show.html.twig', array(
+            'arrayPost' => $postResult,
+            'maxPages'=>$maxPages,
+            'thisPage' => $currentPage,
+            'all_items' => $postQueryCompleta,
+            'reacciones' => $tablaReacciones
+        ) );
+    }
 
 }

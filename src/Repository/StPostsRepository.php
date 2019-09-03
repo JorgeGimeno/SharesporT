@@ -3,8 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\StPosts;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method StPosts|null find($id, $lockMode = null, $lockVersion = null)
@@ -48,21 +49,48 @@ class StPostsRepository extends ServiceEntityRepository
     }
     */
 
+    // Devuelve los post paginados
+    public function paginate($query, $page = 1, $limit = 3)
+    {
+        $paginator = new Paginator($query);
 
+        $paginator->getQuery()
+            ->setFirstResult($limit * ($page - 1)) // Offset
+            ->setMaxResults($limit); // Limit
+
+        return $paginator;  
+    }
 
     // Devuelve un array de los últimos $numeroPosts publicados
     /**
      * @return StPosts[] Returns an array of StPosts objects
     */
-    public function postsOrdenadosPorFecha(int $numeroPosts)
+    public function postsOrdenadosPorFecha($currentPage = 1, $limit = 3)
     {
-        return $this->createQueryBuilder('p')
+        $query = $this->createQueryBuilder('p')
             ->orderBy('p.fechaHora', 'DESC')
-            ->setMaxResults($numeroPosts)
             ->getQuery()
-            ->getResult()
         ;
+        
+        $paginator = $this->paginate($query, $currentPage, $limit);
+
+        return array(
+            'paginator' => $paginator,
+            'query' => $query
+        );
     }
+
+
+    // Devuelve un array de los últimos $numeroPosts publicados
+    // public function postsOrdenadosPorFecha(int $numeroPosts)
+    // {
+    //     return $this->createQueryBuilder('p')
+    //         ->orderBy('p.fechaHora', 'DESC')
+    //         ->setMaxResults($numeroPosts)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 
 
 
@@ -70,7 +98,7 @@ class StPostsRepository extends ServiceEntityRepository
     public function postsDeporte(int $id_deporte, int $numeroPosts)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.idDeporte = :id_d')
+            ->andWhere('s.deporte = :id_d')
             ->setParameter('id_d',$id_deporte)
             ->orderBy('s.fechaHora', 'DESC')
             ->setMaxResults($numeroPosts)
@@ -78,7 +106,37 @@ class StPostsRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    
+     // Devuelve un array de los últimos $numeroPosts publicados de la ciudad con el nombre $ciudad
+     public function postsCiudad(string $ciudad, int $numeroPosts)
+     {
+         return $this->createQueryBuilder('s')
+             ->andWhere('u.ciudad = :ciudad')
+             ->setParameter('ciudad',$ciudad)
+             ->join('s.usuario', 'u')
+             ->orderBy('s.fechaHora', 'DESC')
+             ->setMaxResults($numeroPosts)
+             ->getQuery()
+             ->getResult()
+         ;
+     }
 
+     // Devuelve un array de los últimos $numeroPosts publicados de la ciudad con el nombre $ciudad
+     // y con el id $id_deporte
+     public function postsCiudadDeporte(string $ciudad, int $id_deporte, int $numeroPosts)
+     {
+         return $this->createQueryBuilder('s')
+             ->andWhere('u.ciudad = :ciudad')
+             ->andWhere('s.deporte = :id_d')
+             ->setParameter('ciudad',$ciudad)
+             ->setParameter('id_d', $id_deporte)
+             ->join('s.usuario', 'u')
+             ->orderBy('s.fechaHora', 'DESC')
+             ->setMaxResults($numeroPosts)
+             ->getQuery()
+             ->getResult()
+         ;
+     }
 
     //Devuelve un array de los últimos $numeroPosts publicados por el usuario con id $id_usuario
     public function postsDeUsuario(int $id_usuario, int $numeroPosts)
@@ -92,7 +150,6 @@ class StPostsRepository extends ServiceEntityRepository
         ->getResult()
     ;
     }
-
 
     //Devuelve el número de post que ha publicado el usuario de id $id_usuario
     public function numeroDePostDeUsuario(int $id_usuario)

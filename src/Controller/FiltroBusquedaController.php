@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\DatosFiltro;
 use App\Form\FiltroBusquedaType;
+use App\Repository\StPostsRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,41 +12,50 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FiltroBusquedaController extends AbstractController
 {
     /**
-     * @Route("/filtro_busqueda", name="filtro_busqueda")
+     * @Route("/post_filter", name="post_filter")
      */
-    public function index(Request $req)
+    public function index(Request $req, StPostsRepository $repoPosts)
     {
 
-        $ciudadObtenida;
-        $deporteObtenidad;
-        $bandera = false;
+        $listadoPostsFiltrados = array(); 
 
         $form = $this->createForm(FiltroBusquedaType::class);
         $form->handleRequest($req);
 
         if($form->isSubmitted() && $form->isValid()){
 
-            $bandera = true;
+            $deporteSeleccionado = $form["deportes"]->getData();
+            $ciudadSeleccionada = $form["ciudades"]->getData();
 
-            $deporte = $req->query->get('deportes');
-            $ciudad = $req->query->get('ciudades');
+            if($ciudadSeleccionada != "" || $deporteSeleccionado != 0){
+                if($deporteSeleccionado != 0 && $ciudadSeleccionada != ""){
+                    $listadoPostsFiltrados = $repoPosts->postsCiudadDeporte($ciudadSeleccionada, $deporteSeleccionado, 5);
+                }
+                if($deporteSeleccionado == 0 && $ciudadSeleccionada != ""){
+                    $listadoPostsFiltrados = $repoPosts->postsCiudad($ciudadSeleccionada, 5);
+                }
+                if($deporteSeleccionado != 0 && $ciudadSeleccionada == 0 && $ciudadSeleccionada == ""){
+                    $listadoPostsFiltrados = $repoPosts->postsDeporte($deporteSeleccionado, 5);
+                }
+            }
 
-            $ciudadObtenidad = "entro if ciudad submit";
-            $deporteObtenidad = "entro if deporte submit";
-
-            return $this->redirectToRoute('filtro_busqueda');
-
-        }
-
-        if(!$bandera){
-            $ciudadObtenidad = "esperando submit ciudad";
-            $deporteObtenidad = "esperando submit deporte";
-        }
+        } 
 
         return $this->render('filtro_busqueda/index.html.twig', [
             'form' => $form->createView(),
-            'deporte' => $deporteObtenidad,
-            'ciudad' => $ciudadObtenidad,
+            'listaPosts' => $listadoPostsFiltrados,
         ]);
+    }
+
+
+    /**
+     * @Route("/postsFiltered/{lista}", name="postsFiltered")
+     */
+    public function postsFiltrados(array $lista)
+    {
+        return $this->render('filtro_busqueda/postsFiltro.html.twig', [
+            'arrayPost' => $lista,
+        ]);
+
     }
 }
