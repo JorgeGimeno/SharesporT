@@ -18,9 +18,8 @@ class FiltroBusquedaController extends AbstractController
     {
 
         $listadoPostsFiltrados = array(); 
-        $datos = new datosFiltro();
 
-        $form = $this->createForm(FiltroBusquedaType::class, $datos);
+        $form = $this->createForm(FiltroBusquedaType::class);
         $form->handleRequest($req);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -46,5 +45,17 @@ class FiltroBusquedaController extends AbstractController
             'form' => $form->createView(),
             'listaPosts' => $listadoPostsFiltrados,
         ]);
+    }
+
+
+    /**
+     * @Route("/postsFiltered/{lista}", name="postsFiltered")
+     */
+    public function postsFiltrados(array $lista)
+    {
+        return $this->render('filtro_busqueda/postsFiltro.html.twig', [
+            'arrayPost' => $lista,
+        ]);
+
     }
 }

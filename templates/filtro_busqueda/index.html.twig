@@ -2,13 +2,11 @@
 
 {% block body %}
 
-
-
     <div class="container">
         {{ form_start(form, {'action':'/post_filter'}) }}
             {{form_widget(form.deportes)}}
             {{form_widget(form.ciudades)}}
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button onclick="ns.cargarPostsFiltro({{listaPosts}})" type="submit" class="btn btn-primary">Buscar</button>
         {{ form_end(form) }}
     <div>
 
