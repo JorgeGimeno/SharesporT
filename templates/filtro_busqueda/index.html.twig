@@ -8,7 +8,7 @@
             {{form_widget(form.ciudades, { 'id': 'ciudadSelected' })}}            
         {{ form_end(form) }}
         <button onclick="enviarFiltros()" class="btn btn-primary">Buscar Posts</button>
-        <button onclick="ns.postCargarPagina({{1}})" class="btn btn-secondary">Quitar Filtro</button>
+        <button onclick="ns.quitarFiltroPosts()" class="btn btn-secondary">Quitar Filtro</button>
     <div>
     <script>
         function enviarFiltros(){

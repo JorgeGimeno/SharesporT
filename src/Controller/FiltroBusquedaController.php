@@ -45,8 +45,14 @@ class FiltroBusquedaController extends AbstractController
                 $listadoPostsFiltrados = $repoPosts->postsDeporte($deporte, 5);
             }
 
+            $tablaReacciones = [];
+            foreach ($listadoPostsFiltrados as $p){
+                array_push($tablaReacciones, $p->cuentaReacciones());
+            }
+
         return $this->render('filtro_busqueda/postsFiltro.html.twig', [
             'listaPosts' => $listadoPostsFiltrados,
+            'reacciones' => $tablaReacciones
         ]);
 
     }

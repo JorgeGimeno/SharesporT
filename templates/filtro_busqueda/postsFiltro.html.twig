@@ -1,4 +1,5 @@
 {% for p in listaPosts %}
+
 <div class="card gedf-card">
     <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
@@ -9,7 +10,7 @@
                 <div class="ml-2">
                     <div class="h5 m-0"> {{ p.usuario.nick }} </div>
 
-                    <div class="h7 text-muted"> {{ p.usuario.nombre }} {{ p.usuario.apellidos }} </div>
+                    <div class="h7 text-muted"> {{ p.usuario.nombre }} {{ p.usuario.apellidos }} - {{ p.usuario.ciudad }} </div>
                     <div class="h7 text-muted"> {{ p.deporte.nombre }} </div>
                 </div>
             </div>
@@ -29,30 +30,41 @@
         </div>
     </div>
     <div class="card-body">
-        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{p.fechaHora|date("d-m-Y H:m:s")}}</div>
+        <div class="h7 mb-2"> <i class="fa fa-clock-o mr-2"></i>{{p.fechaHora|date("d-m-Y H:m:s")}}</div>
 
 
         <p class="card-text">
             {{ p.contenido }}
         </p>
     </div>
-    <div class="card-footer">
-        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-
-        <a href="https://twitter.com/share" class="card-link ">
-            <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
-
-        <a href="https://facebook.com/share" class="card-link ">
-            <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
-
-
-        <a href="https://api.whatsapp.com/send?phone=9986128665&text='www.sharesport.com' " class="card-link">
-            <i class="fa fa-whatsapp fa-2x text-success" aria-hidden="true"></i></a>
-
+    <div class="card-footer bg-white p-1"> 
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-7 pl-4">
+                    <ul class="list-group reacciones">
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/FLIPADO" class="card-link" title="Te lo has flipado"><i class="fa fa-rocket text-success"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['FLIPADO']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/LIKE" class="card-link" title="Mola"><i class="fa fa-trophy text-warning"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['LIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DISLIKE" class="card-link" title="No me gusta"><i class="fa fa-frown-o text-danger"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DISLIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DESCANSA" class="card-link" title="Descansa"><i class="fa fa-bed"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DESCANSA']}})</sup></a></li>
+                    </ul>
+                </div>
+                <div class="col-5">
+                    <ul class="list-group rrss justify-content-end">
+                        <li class="list-group-item">
+                            <a href="https://twitter.com/share?text={{p.usuario.nombre}}%20ha%20posteado%20en%20SharesporT%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}%0A%23SharesporT%20" title="Compartir en Twitter" class="card-link text-muted"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://facebook.com/share" title="Compartir en Facebook" class="card-link text-muted"> <i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://api.whatsapp.com/send?text={{p.usuario.nombre}}%20ha%20posteado%20en%20www.SharesporT.com%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}" title="Compartir en WhatsApp" class="card-link text-muted"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 {% else %} No hay registros
 {% endfor %}
-
-</div>
