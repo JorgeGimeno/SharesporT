@@ -30,56 +30,66 @@
         </div>
     </div>
     <div class="card-body">
-        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>{{p.fechaHora|date("d-m-Y H:m:s")}}</div>
+        <div class="h7 mb-2"> <i class="fa fa-clock-o mr-2"></i>{{p.fechaHora|date("d-m-Y H:m:s")}}</div>
 
 
         <p class="card-text">
             {{ p.contenido }}
         </p>
     </div>
-    <div class="card-footer">
-        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-
-        <a href="https://twitter.com/share?text={{p.usuario.nombre}}%20ha%20posteado%20en%20SharesporT%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}%0A%23SharesporT%20" class="card-link ">
-            <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
-
-        <a href="https://facebook.com/share" class="card-link ">
-            <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
-
-        <a href="https://api.whatsapp.com/send?text={{p.usuario.nombre}}%20ha%20posteado%20en%20www.SharesporT.com%20sobre%20{{p.deporte.nombre}}%3A%0A{{ p.contenido }}" class="card-link">
-            <i class="fa fa-whatsapp fa-2x text-success" aria-hidden="true"></i></a>
-
+    <div class="card-footer bg-white p-1">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-7 pl-4">
+                    <ul class="list-group reacciones">
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/LIKE" class="card-link" title="Mola"><i class="fa fa-trophy text-warning"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['LIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DISLIKE" class="card-link" title="No me gusta"><i class="fa fa-frown-o text-danger"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DISLIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DESCANSA" class="card-link" title="Descansa"><i class="fa fa-bed"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DESCANSA']}})</sup></a></li>
+                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/FLIPADO" class="card-link" title="Te lo has flipado"><i class="fa fa-rocket text-success"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['FLIPADO']}})</sup></a></li>
+                    </ul>
+                </div>
+                <div class="col-5">
+                    <ul class="list-group rrss justify-content-end">
+                        <li class="list-group-item">
+                            <a href="https://twitter.com/share?text={{p.usuario.nombre}}%20ha%20posteado%20en%20SharesporT%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}%0A%23SharesporT%20" title="Compartir en Twitter" class="card-link text-muted"> <i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://facebook.com/share" title="Compartir en Facebook" class="card-link text-muted"> <i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="https://api.whatsapp.com/send?text={{p.usuario.nombre}}%20ha%20posteado%20en%20www.SharesporT.com%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}" title="Compartir en WhatsApp" class="card-link text-muted"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-{% else %} No hay registros
-{% endfor %}
+
+{% else %} No hay registros {% endfor %}
 
 <div class="my-3">
-{% if maxPages > 1 %}
-    <ul>
+    {% if maxPages > 1 %}
+    <ul class="d-flex justify-content-center pl-0">
         {%if thisPage > 1 %}
-            <li class="d-inline mr-3">
-                {# <a href="{{ path('main', {currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a> #}
-                <button class="btn btn-outline-info btn-sm" onclick='ns.postCargarPagina({{ thisPage-1 < 1 ? 1 : thisPage-1 }})' href="#">Ant</button>
-            </li>
-        {% endif %}
-
-        {# Render each page number #}
-        {% for i in 1..maxPages %}
-            <li class="d-inline mr-3">
-                {# <a href="{{ path('main', {currentPage: i}) }}">{{ i }}</a> #}
-                <button class="btn btn-info btn-sm"  onclick='ns.postCargarPagina({{ i }})' href="#">{{ i }}</buttton>
+        <li class="d-inline mr-3">
+            {# <a href="{{ path('main', {currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a> #}
+            <button class="btn btn-info btn-sm" onclick='ns.postCargarPagina({{ thisPage-1 < 1 ? 1 : thisPage-1 }})' href="#">Ant</button>
+        </li>
+        {% endif %} {# Render each page number #} {% for i in 1..maxPages %}
+        <li class="d-inline mr-3">
+            {# <a href="{{ path('main', {currentPage: i}) }}">{{ i }}</a> #}
+            <button class="btn btn-outline-info btn-sm" onclick='ns.postCargarPagina({{ i }})' href="#">{{ i }}</buttton>
             </li>
         {% endfor %}
 
         {# `»` arrow #}
         {%if thisPage < maxPages %}
-            <li class="d-inline mr-3">
+            <li class="d-inline">
                 {# <a href="{{ path('main', {currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a> #}
-                <button class="btn btn-outline-info btn-sm" onclick='ns.postCargarPagina({{ thisPage+1 <= maxPages ? thisPage+1 : thisPage }})' href="#">Sig</button>
-            </li>
+                <button class="btn btn-info btn-sm" onclick='ns.postCargarPagina({{ thisPage+1 <= maxPages ? thisPage+1 : thisPage }})' href="#">Sig</button>
+        </li>
         {% endif %}
     </ul>
-{% endif %}
+    {% endif %}
 </div>

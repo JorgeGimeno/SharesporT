@@ -3,9 +3,10 @@
 namespace App\Entity;
 
 use DateTimeInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\StReacciones;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * StPosts
@@ -60,7 +61,7 @@ class StPosts
     private $idPostPadre = '-1';
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\StReacciones", mappedBy="StPosts")
+     * @ORM\OneToMany(targetEntity="App\Entity\StReacciones", mappedBy="post")
      */
     private $reacciones;
 
@@ -205,5 +206,31 @@ class StPosts
         return $this;
     }
 
+    public function cuentaReacciones()
+    {
+        $tabla_reacciones= ['LIKE'=>0,
+                            'DISLIKE'=>0,
+                            'DESCANSA'=>0,
+                            'FLIPADO'=>0];
+        if (!empty($this->reacciones)){
+            foreach ($this->reacciones as $r){
+                switch($r->getReaccion()){
+                    case 'LIKE':
+                        $tabla_reacciones['LIKE']+=1;
+                        break;
+                    case 'DISLIKE':
+                        $tabla_reacciones['DISLIKE']+=1;
+                        break;
+                    case 'DESCANSA':
+                        $tabla_reacciones['DESCANSA']+=1;
+                        break;
+                    case 'FLIPADO':
+                        $tabla_reacciones['FLIPADO']+=1;
+                        break;
 
+                }
+            }
+        }
+        return $tabla_reacciones;
+    }
 }

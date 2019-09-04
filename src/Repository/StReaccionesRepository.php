@@ -2,10 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\StPosts;
+use App\Entity\StUsuarios;
 use App\Entity\StReacciones;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @method StReacciones|null find($id, $lockMode = null, $lockVersion = null)
@@ -48,4 +50,42 @@ class StReaccionesRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function recuentoDeReacciones ()
+    {
+        return $this->createQueryBuilder('s')
+        ->addSelect('id_post, reaccion, COUNT(reaccion)')
+        ->addGroupBy('reaccion')
+        ->setMaxResults(1000)
+        ->getQuery()
+        ->getResult()
+    ;    
+    }
+
+    //Si existe la reaccion de un usuario a un post, devuelve la reaccion, si no, devuelve nulo
+    public function existeReaccion(StUsuarios $usuario, StPosts $post): ?StReacciones
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.usuario = :user and s.post = :p')
+            ->setParameter('user', $usuario)
+            ->setParameter('p', $post)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    //Actualiza la reaccion de un usuario a un post concreto
+    public function actualizarContenidoReaccion(StUsuarios $usuario, StPosts $post, String $reaccion)
+    {
+        return $this->createQueryBuilder('r')
+            ->update()
+            ->set('r.reaccion', ':reac')
+            ->where('r.usuario = :user and r.post = :p')
+            ->setParameter('user', $usuario)
+            ->setParameter('p', $post)
+            ->setParameter('reac',$reaccion)
+            ->getQuery()
+            ->execute()
+        ;
+    }
 }

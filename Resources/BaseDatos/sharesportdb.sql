@@ -71,16 +71,17 @@ CREATE TABLE `st_reacciones` (
   `id_post` int(11) DEFAULT NULL,
   `reaccion` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `st_reacciones` */
 
 insert  into `st_reacciones`(`Id`,`id_usuario`,`id_post`,`reaccion`) values 
 (1,256,8,'LIKE'),
 (2,255,8,'LIKE'),
-(3,256,8,'FLIPADO'),
-(4,255,8,'DISLIKE'),
-(5,252,7,'DESCANSA');
+(3,256,3,'FLIPADO'),
+(4,254,8,'DISLIKE'),
+(5,252,7,'DESCANSA'),
+(9,256,7,'LIKE');
 
 /*Table structure for table `st_usuarios` */
 
