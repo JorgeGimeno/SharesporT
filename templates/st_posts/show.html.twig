@@ -41,14 +41,13 @@
         <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
         <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
 
-        <a href="https://twitter.com/share" class="card-link ">
+        <a href="https://twitter.com/share?text={{p.usuario.nombre}}%20ha%20posteado%20en%20SharesporT%20sobre%20{{p.deporte.nombre}}%0A{{ p.contenido }}%0A%23SharesporT%20" class="card-link ">
             <i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
 
         <a href="https://facebook.com/share" class="card-link ">
             <i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
 
-
-        <a href="https://api.whatsapp.com/send?phone=9986128665&text='www.sharesport.com' " class="card-link">
+        <a href="https://api.whatsapp.com/send?text={{p.usuario.nombre}}%20ha%20posteado%20en%20www.SharesporT.com%20sobre%20{{p.deporte.nombre}}%3A%0A{{ p.contenido }}" class="card-link">
             <i class="fa fa-whatsapp fa-2x text-success" aria-hidden="true"></i></a>
 
     </div>
