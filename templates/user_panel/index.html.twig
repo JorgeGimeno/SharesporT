@@ -5,17 +5,15 @@
                 <img class="img-fluid user-panel-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaJEjJca1xoMsB9ROO31IG__sgYKs-8Mc2OwGimlKqhjY8mYKj">
             </div>
 
-            <div class="h5">{{ Usuario.nick }}</div>
-            <div class="h7 text-muted">Fullname : {{ Usuario.nombre }} {{Usuario.apellidos }}</div><br>
-            <div class="h5"> Fecha Nacimiento
+            <div class="h3 mt-3 text-center">{{ Usuario.nick }}</div>
+            <div class="h7 text-muted text-center">{{ Usuario.nombre }} {{Usuario.apellidos }}</div><br>
+            <div class="h5">
             </div>
-            <div class="h6">{{Usuario.fechaNac|date("d-m-Y")}}</h5><br><br>
-                <div class="h5"> Ciudad
-                </div>
+            <div class="h6 text-center">{{Usuario.fechaNac|date("d-m-Y")}}</h5><br><br>
                 <div class="h6">{{Usuario.ciudad}}</h5>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="nav-item">
+                    <li class="nav-item decoration-none">
                         <a class="nav-link" href="/edit">Editar Datos</a>
                     </li>
                 </ul>
