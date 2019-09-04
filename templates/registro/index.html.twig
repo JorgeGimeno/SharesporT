@@ -26,6 +26,20 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
+                                
+                                    <div class="fechaLabelContainer">
+                                    <label for="fechaNac">Foto Usuario</label>
+                                </div>
+                                    <div class="file-path-wrapper">
+                                    {{ form_widget(form.foto, {'attr':{'placeholder':'Sube tu foto', 'type':"file", 'class':'file-path validate', 'value':''}} )}}
+                                    
+                                    </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
                                 <div class="fechaLabelContainer">
                                     <label for="fechaNac">Fecha Nacimiento</label>
                                 </div>
