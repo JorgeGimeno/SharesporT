@@ -2,13 +2,27 @@
 
 {% block body %}
 
-    <div class="container">
-        {{ form_start(form) }}
-            {{form_widget(form.deportes, { 'id': 'deporteSelected' })}}
-            {{form_widget(form.ciudades, { 'id': 'ciudadSelected' })}}            
-        {{ form_end(form) }}
-        <button onclick="enviarFiltros()" class="btn btn-primary">Buscar Posts</button>
-        <button onclick="ns.quitarFiltroPosts()" class="btn btn-secondary">Quitar Filtro</button>
+    <div class="example-wrapper" id="filtropost">
+        <div class="card gedf-card">
+            
+                
+                {{ form_start(form) }}
+                    <div class="row justify-content-between m-2">
+                        <div class="col-10 mr-0">
+                            <ul class="list-group flex-row">   
+                                <li class="d-inline mr-3" >{{form_widget(form.deportes, { 'id': 'deporteSelected' })}}</li>
+                                <li class="d-inline">{{form_widget(form.ciudades, { 'id': 'ciudadSelected' })}}</li>
+                            </ul>  
+                        </div> 
+                        <div class="col-2 mr-0 " >
+                            <ul class="list-group justify-content-center flex-row ">
+                                <li class="d-inline mr-1" ><button onclick="enviarFiltros()" class="btn btn-secondary fa fa-search "></button></li>
+                                <li class="d-inline"><button onclick="ns.postCargarPagina({{1}})" class="btn btn-danger fa fa-ban "></button></li>          
+                            </ul>   
+                        </div>
+                    </div>
+                {{ form_end(form) }}
+        </div>
     <div>
     <script>
         function enviarFiltros(){
