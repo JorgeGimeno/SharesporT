@@ -68,7 +68,7 @@ class StPostsRepository extends ServiceEntityRepository
     public function postsOrdenadosPorFecha($currentPage = 1, $limit = 3)
     {
         $query = $this->createQueryBuilder('p')
-            ->orderBy('p.fechaHora', 'DESC')
+            ->orderBy('p.fechaHora', 'DESC') 
             ->getQuery()
         ;
         
@@ -95,47 +95,51 @@ class StPostsRepository extends ServiceEntityRepository
 
 
     // Devuelve un array de los últimos $numeroPosts publicados del deporte con id $id_deporte
-    public function postsDeporte(int $id_deporte, int $numeroPosts)
+    public function postsDeporte(int $id_deporte, int $numeroPosts, $currentPage = 1, $limit = 3)
     {
-        return $this->createQueryBuilder('s')
+        $query =  $this->createQueryBuilder('s')
             ->andWhere('s.deporte = :id_d')
             ->setParameter('id_d',$id_deporte)
             ->orderBy('s.fechaHora', 'DESC')
-            ->setMaxResults($numeroPosts)
             ->getQuery()
-            ->getResult()
         ;
+
+        $paginator = $this->paginarLista($query, $currentPage, $limit);
+        return $paginator;
     }
     
      // Devuelve un array de los últimos $numeroPosts publicados de la ciudad con el nombre $ciudad
-     public function postsCiudad(string $ciudad, int $numeroPosts)
+     public function postsCiudad(string $ciudad, int $numeroPosts, $currentPage = 1, $limit = 3)
      {
-         return $this->createQueryBuilder('s')
+         $query = $this->createQueryBuilder('s')
              ->andWhere('u.ciudad = :ciudad')
              ->setParameter('ciudad',$ciudad)
              ->join('s.usuario', 'u')
              ->orderBy('s.fechaHora', 'DESC')
-             ->setMaxResults($numeroPosts)
              ->getQuery()
-             ->getResult()
          ;
+
+         $paginator = $this->paginarLista($query, $currentPage, $limit);
+         return $paginator;
      }
 
      // Devuelve un array de los últimos $numeroPosts publicados de la ciudad con el nombre $ciudad
      // y con el id $id_deporte
-     public function postsCiudadDeporte(string $ciudad, int $id_deporte, int $numeroPosts)
+     public function postsCiudadDeporte(string $ciudad, int $id_deporte, int $numeroPosts, $currentPage = 1, $limit = 3)
      {
-         return $this->createQueryBuilder('s')
+        $query = $this->createQueryBuilder('s')
              ->andWhere('u.ciudad = :ciudad')
              ->andWhere('s.deporte = :id_d')
              ->setParameter('ciudad',$ciudad)
              ->setParameter('id_d', $id_deporte)
              ->join('s.usuario', 'u')
              ->orderBy('s.fechaHora', 'DESC')
-             ->setMaxResults($numeroPosts)
              ->getQuery()
-             ->getResult()
          ;
+
+        $paginator = $this->paginarLista($query, $currentPage, $limit);
+        return $paginator;
+
      }
 
     //Devuelve un array de los últimos $numeroPosts publicados por el usuario con id $id_usuario
@@ -161,5 +165,26 @@ class StPostsRepository extends ServiceEntityRepository
         ->getQuery()
         ->getSingleScalarResult()
     ;
+    }
+
+    public function paginarLista($query, $currentPage, $limit){
+
+        $res = new Paginator($query);    
+        if(count($res) > 1){
+            $paginator = $this->paginate($query, $currentPage, $limit);
+
+            return array(
+                'paginator' => $paginator,
+                'query' => $query,
+                'bandera' => 0
+            );
+        } else {
+            return array(
+                'lista' => $query->getResult(),
+                'bandera' => 1
+            );
+        }
+
+        
     }
 }
