@@ -345,6 +345,7 @@ main.sharesport_main .card.gedf-card {
 main.sharesport_main div#post_list {
     width: 94%;
     margin: 0 auto;
+    margin-top: 90px;
 }
 
 main.sharesport_main #post_list .card.gedf-card {
