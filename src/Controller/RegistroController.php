@@ -32,6 +32,11 @@ class RegistroController extends AbstractController
             );
 
             $entityManager = $this->getDoctrine()->getManager();
+            $file=$form->get('foto')->getData();
+            if ($file == null){
+                $file= file('/public/images/user.png');
+            }
+            $user->setFoto($file);
             $entityManager->persist($user);
             $entityManager->flush();
 
