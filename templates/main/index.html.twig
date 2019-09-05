@@ -35,6 +35,7 @@
 <script>
    
     var ns = {
+        //carga el listado de post ordenado por fecha con paginado
         postCargarPagina:function(pagina){
             $.ajax({ url: "/listadoPost/" + pagina,
                 success: function(htmlRecibido){
@@ -42,13 +43,32 @@
                 }
             });            
         },
+        //genera un listado de post sin ningun filtro
+        quitarFiltroPosts:function(){
+            $.ajax({ url: "/listadoPost/1",
+                success: function(htmlRecibido){
+                    $('#post_list').html(htmlRecibido);
+                }
+            });
+            $.ajax({ url: "/post_filter",
+                success: function(htmlRecibido){
+                    $('#post_filter').html(htmlRecibido);
+                }
+            });
+        },
 
+        //carga un listado de posts filtrado por deporte, ciudad o ambos
         cargarPostsFiltro:function(deporte, ciudad){
             $.ajax({ url: "/postsFiltered/" + deporte + "/" + ciudad,
                 success: function(htmlRecibido){
                     $('#post_list').html(htmlRecibido);
                 }
             });
+            
+        },
+
+        //
+        refrescarPostOnReaccionar:function(){
             
         }
     }

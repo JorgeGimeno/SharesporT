@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\StPosts;
 use App\Entity\DatosFiltro;
 use App\Form\FiltroBusquedaType;
 use App\Repository\StPostsRepository;
@@ -29,25 +30,49 @@ class FiltroBusquedaController extends AbstractController
 
 
     /**
-     * @Route("/postsFiltered/{deporte}/{ciudad}", name="postsFiltered", methods={"GET"})
+     * @Route("/postsFiltered/{deporte}/{ciudad}/{currentPage}", name="postsFiltered", methods={"GET"})
      */
-    public function postsFiltrados(int $deporte, string $ciudad, StPostsRepository $repoPosts)
+    public function postsFiltrados(int $deporte, string $ciudad, $currentPage = 1)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $limit = 3;
+        $postResult;
+        $postQueryCompleta;
+
         $listadoPostsFiltrados = array();
 
             if($deporte != 0 && $ciudad != "0"){
-                $listadoPostsFiltrados = $repoPosts->postsCiudadDeporte($ciudad, $deporte, 5);
+                $listadoPostsFiltrados = $em->getRepository(StPosts::class)->postsCiudadDeporte($ciudad, $deporte, 5, $currentPage, $limit);
             }
             if($deporte == 0 && $ciudad != "0"){
-                $listadoPostsFiltrados = $repoPosts->postsCiudad($ciudad, 5);
+                $listadoPostsFiltrados = $em->getRepository(StPosts::class)->postsCiudad($ciudad, 5, $currentPage, $limit);
             }
             if($deporte != 0 && $ciudad == "0"){
-                $listadoPostsFiltrados = $repoPosts->postsDeporte($deporte, 5);
+                $listadoPostsFiltrados = $em->getRepository(StPosts::class)->postsDeporte($deporte, 5, $currentPage, $limit);
             }
 
-        return $this->render('filtro_busqueda/postsFiltro.html.twig', [
-            'listaPosts' => $listadoPostsFiltrados,
-        ]);
+            if($listadoPostsFiltrados['bandera'] == 0){
+                $postResult = $listadoPostsFiltrados['paginator'];
+                $postQueryCompleta =  $listadoPostsFiltrados['query'];
+                $maxPages = ceil($listadoPostsFiltrados['paginator']->count() / $limit);
+            } else {
+                $postResult = $listadoPostsFiltrados['lista'];
+                $maxPages = 1;
+                $postQueryCompleta =  $listadoPostsFiltrados['lista'];
+            }
 
-    }
+            $tablaReacciones = [];
+            foreach ($postResult as $p){
+                array_push($tablaReacciones, $p->cuentaReacciones());
+            }
+
+            return $this->render('st_posts/show.html.twig', array(
+                'arrayPost' => $postResult, 
+                'maxPages'=>$maxPages,
+                'thisPage' => $currentPage,
+                'all_items' => $postQueryCompleta,
+                'reacciones' => $tablaReacciones,
+            ) );
+        }
 }

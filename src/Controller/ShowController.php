@@ -50,11 +50,11 @@ class ShowController extends AbstractController
     $tablaReacciones = [];
     foreach ($postResult as $p){
         array_push($tablaReacciones, $p->cuentaReacciones());
-    }
+    } 
     
 
     return $this->render('st_posts/show.html.twig', array(
-            'arrayPost' => $postResult,
+            'arrayPost' => $postResult, 
             'maxPages'=>$maxPages,
             'thisPage' => $currentPage,
             'all_items' => $postQueryCompleta,
