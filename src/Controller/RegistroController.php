@@ -32,11 +32,16 @@ class RegistroController extends AbstractController
             );
 
             $entityManager = $this->getDoctrine()->getManager();
+            // capturamos la foto del form
             $file=$form->get('foto')->getData();
+            // si no esta informado le agregamso la foto por defecto
             if ($file == null){
                 $file= file('/public/images/user.png');
             }
-            $user->setFoto($file);
+            // obtenemos la foto desde la ruta para grabarla
+            $contenido=file_get_contents($file);
+            
+            $user->setFoto($contenido);
             $entityManager->persist($user);
             $entityManager->flush();
 
