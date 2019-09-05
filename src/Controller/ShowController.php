@@ -37,29 +37,31 @@ class ShowController extends AbstractController
     */
     public function indexAction($currentPage = 1)
     {
+        $bandera = false;
 
-    $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager();
 
-    $limit = 3;
-    $post = $em->getRepository(StPosts::class)->postsOrdenadosPorFecha($currentPage, $limit);
-    $postResult = $post['paginator'];
-    $postQueryCompleta =  $post['query'];
+        $limit = 3;
+        $post = $em->getRepository(StPosts::class)->postsOrdenadosPorFecha($currentPage, $limit);
+        $postResult = $post['paginator'];
+        $postQueryCompleta =  $post['query'];
 
-    $maxPages = ceil($post['paginator']->count() / $limit);
+        $maxPages = ceil($post['paginator']->count() / $limit);
 
-    $tablaReacciones = [];
-    foreach ($postResult as $p){
-        array_push($tablaReacciones, $p->cuentaReacciones());
-    } 
+        $tablaReacciones = [];
+        foreach ($postResult as $p){
+            array_push($tablaReacciones, $p->cuentaReacciones());
+        } 
     
 
-    return $this->render('st_posts/show.html.twig', array(
-            'arrayPost' => $postResult, 
-            'maxPages'=>$maxPages,
-            'thisPage' => $currentPage,
-            'all_items' => $postQueryCompleta,
-            'reacciones' => $tablaReacciones
-        ) );
+        return $this->render('st_posts/show.html.twig', array(
+                'arrayPost' => $postResult, 
+                'maxPages'=>$maxPages,
+                'thisPage' => $currentPage,
+                'all_items' => $postQueryCompleta,
+                'reacciones' => $tablaReacciones,
+                'bandera' => $bandera
+            ) );
     }
 
 }

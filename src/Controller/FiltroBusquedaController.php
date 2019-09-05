@@ -34,7 +34,10 @@ class FiltroBusquedaController extends AbstractController
      */
     public function postsFiltrados(int $deporte, string $ciudad, $currentPage = 1)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager()->getRepository(StPosts::class);
+
+        $bandera = true;
+        $maxPages;
 
         $limit = 3;
         $postResult;
@@ -43,13 +46,13 @@ class FiltroBusquedaController extends AbstractController
         $listadoPostsFiltrados = array();
 
             if($deporte != 0 && $ciudad != "0"){
-                $listadoPostsFiltrados = $em->getRepository(StPosts::class)->postsCiudadDeporte($ciudad, $deporte, 5, $currentPage, $limit);
+                $listadoPostsFiltrados = $em->postsCiudadDeporte($ciudad, $deporte, 5, $currentPage, $limit);
             }
             if($deporte == 0 && $ciudad != "0"){
-                $listadoPostsFiltrados = $em->getRepository(StPosts::class)->postsCiudad($ciudad, 5, $currentPage, $limit);
+                $listadoPostsFiltrados = $em->postsCiudad($ciudad, 5, $currentPage, $limit);
             }
             if($deporte != 0 && $ciudad == "0"){
-                $listadoPostsFiltrados = $em->getRepository(StPosts::class)->postsDeporte($deporte, 5, $currentPage, $limit);
+                $listadoPostsFiltrados = $em->postsDeporte($deporte, 5, $currentPage, $limit);
             }
 
             if($listadoPostsFiltrados['bandera'] == 0){
@@ -69,10 +72,13 @@ class FiltroBusquedaController extends AbstractController
 
             return $this->render('st_posts/show.html.twig', array(
                 'arrayPost' => $postResult, 
-                'maxPages'=>$maxPages,
+                'maxPages'=> $maxPages,
                 'thisPage' => $currentPage,
                 'all_items' => $postQueryCompleta,
                 'reacciones' => $tablaReacciones,
+                'ciudad' => $ciudad,
+                'deporte' => $deporte,
+                'bandera' => $bandera,
             ) );
         }
 }

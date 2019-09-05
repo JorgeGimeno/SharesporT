@@ -58,8 +58,8 @@
         },
 
         //carga un listado de posts filtrado por deporte, ciudad o ambos
-        cargarPostsFiltro:function(deporte, ciudad){
-            $.ajax({ url: "/postsFiltered/" + deporte + "/" + ciudad,
+        cargarPostsFiltro:function(deporte, ciudad, pagina){
+            $.ajax({ url: "/postsFiltered/" + deporte + "/" + ciudad + "/" + pagina,
                 success: function(htmlRecibido){
                     $('#post_list').html(htmlRecibido);
                 }
