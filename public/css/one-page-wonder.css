@@ -232,7 +232,8 @@ main.registro select {
     color: grey;
 }
 
-main.registro label[for="fechaNac"] {
+main.registro label[for="fechaNac"],
+main.registro label[for="foto"] {
     color: white;
     text-transform: capitalize;
     display: block;
@@ -245,7 +246,8 @@ main.registro label[for="fechaNac"] {
     font-size: 16px;
 }
 
-main.registro .fechaLabelContainer {
+main.registro .fechaLabelContainer,
+main.registro .fotoLabelContainer {
     background: rgba(255, 255, 255, 0.2)
 }
 
@@ -442,7 +444,6 @@ ul.reacciones .list-group-item {
     display: block;
     margin-bottom: -1px;
     background-color: white;
-    /* padding-right: 12px; */
     border: none;
     padding: 8px 14px 8px 0;
 }
@@ -453,4 +454,47 @@ select#deporteSelected {
 
 select#ciudadSelected {
     max-width: 200px;
+}
+
+[type="file"] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+[type="file"]+label {
+    display: block!important;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    padding: 15px 40px !important;
+    text-transform: uppercase;
+    width: fit-content;
+    text-align: center;
+    margin: -6px auto;
+}
+
+[type="file"]:focus+label,
+[type="file"]+label:hover {
+    background-color: #f15d22;
+}
+
+div#mensaje-foto {
+    display: none;
+    text-align: center;
+    color: #fff;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    margin-bottom: -14px;
+}
+
+.custom-file {
+    margin-top: 14px;
 }
