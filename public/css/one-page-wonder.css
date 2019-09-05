@@ -345,7 +345,7 @@ main.sharesport_main .card.gedf-card {
 main.sharesport_main div#post_list {
     width: 94%;
     margin: 0 auto;
-    margin-top: 90px;
+    margin-top: 50px;
 }
 
 main.sharesport_main #post_list .card.gedf-card {
@@ -445,4 +445,12 @@ ul.reacciones .list-group-item {
     /* padding-right: 12px; */
     border: none;
     padding: 8px 14px 8px 0;
+}
+
+select#deporteSelected {
+    min-width: 122px;
+}
+
+select#ciudadSelected {
+    max-width: 200px;
 }
