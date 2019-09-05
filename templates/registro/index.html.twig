@@ -2,6 +2,13 @@
 
 {% block title %}Hello RegistroController!{% endblock %}
 
+{% block stylesheets %}
+<style>
+    .custom-file-label { opacity: 0; }
+    .custom-file-input { opacity: 1; }
+</style>
+{% endblock %}
+
 {% block body %}
 <main class="registro">
         <div class="container">
@@ -26,15 +33,14 @@
                         </div>
                         <div class="form-row">
                             <div class="form-group">
-                                
-                                    <div class="fechaLabelContainer">
-                                    <label for="fechaNac">Foto Usuario</label>
+                                <div class="fotoLabelContainer">
+                                    <label for="foto">Foto Usuario</label>
                                 </div>
-                                    <div class="file-path-wrapper">
-                                    {{ form_widget(form.foto, {'attr':{'placeholder':'Sube tu foto', 'type':"file", 'class':'file-path validate', 'value':''}} )}}
-                                    
-                                    </div>
-                                
+                                <div class="custom-file">
+                                    {{ form_widget(form.foto, {'id': 'file'} )}}
+                                    <label id="for-file" for="file"><i class="fa fa-file mr-2" aria-hidden="true"></i>Elige una foto</label>
+                                </div>
+                                <div id="mensaje-foto"></div>
                             </div>
                         </div>
 
@@ -87,4 +93,17 @@
                 </div>
             </div>
     </main>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).ready(function(){
+            $('input[type="file"]').change(function(e){
+                var fileName = e.target.files[0].name;
+                $('#mensaje-foto').append(fileName);
+                $('#mensaje-foto').css("display","block");
+            });
+        });
+
+</script>
 {% endblock %}

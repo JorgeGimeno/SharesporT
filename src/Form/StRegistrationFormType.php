@@ -38,7 +38,7 @@ class StRegistrationFormType extends AbstractType
                 ],
             ])
             ->add('foto', FileType::class, [
-                'mapped' => false
+                'mapped' => false,
             ])
             ->add('mail')
             ->add('ciudad')
