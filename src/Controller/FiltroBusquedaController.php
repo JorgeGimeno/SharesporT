@@ -72,6 +72,14 @@ class FiltroBusquedaController extends AbstractController
                 array_push($tablaReacciones, $p->cuentaReacciones());
             }
 
+            $tablaMensajes = [];
+            $tablafotos = [];
+            foreach ($postResult as $p){
+                array_push($tablaMensajes, $em->numeroDeComentariosDeUnPost($p));
+                $image = base64_encode(stream_get_contents($p->getUsuario()->getFoto()));
+                array_push($tablafotos, $image );
+            }
+
             return $this->render('st_posts/show.html.twig', array(
                 'arrayPost' => $postResult, 
                 'maxPages'=> $maxPages,
@@ -82,6 +90,8 @@ class FiltroBusquedaController extends AbstractController
                 'deporte' => $deporte,
                 'bandera' => $bandera,
                 'currentPage' => $currentPage,
+                'NumerosComentarios' => $tablaMensajes,
+                'tablafotos' => $tablafotos,
             ) );
         }
 }
