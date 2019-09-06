@@ -37,7 +37,11 @@ class ShowController extends AbstractController
     */
     public function indexAction($currentPage = 1)
     {
-        $bandera = false;
+        
+
+        $deporte = 0;
+        $ciudad = "0";
+        $bandera = 0;
 
         $em = $this->getDoctrine()->getManager();
 
@@ -60,7 +64,10 @@ class ShowController extends AbstractController
                 'thisPage' => $currentPage,
                 'all_items' => $postQueryCompleta,
                 'reacciones' => $tablaReacciones,
-                'bandera' => $bandera
+                'bandera' => $bandera,
+                'deporte' => $deporte,
+                'ciudad' => $ciudad,
+                'currentPage' => $currentPage,
             ) );
     }
 

@@ -1,0 +1,35 @@
+{% block body %}
+
+    <div class="example-wrapper"> 
+        <div class="card gedf-card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Mensaje</a>
+                    </li>
+                </ul>
+            </div>
+            {{ form_start(form, {'class':'card-body', 'action':"/new_comment/"~ id_padre }) }}
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                        <div class="form-group">
+                            <label class="sr-only" for="contenido">post</label>
+                            {{form_widget(form.contenido, {
+                                'attr':{
+                                    'placeholder':'¿Qué te parece?',
+                                    'class':'form-control',
+                                    'rows':'3'
+                                    }})}}
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-toolbar justify-content-between">
+                    <div class="btn-group">
+                        <button id="btn-publicar" name="newPost" type="submit" class="btn btn-primary publicar">Responder</button>
+                    </div>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+

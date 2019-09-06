@@ -6,6 +6,7 @@ use App\Entity\StPosts;
 use App\Entity\StReacciones;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
 * @Route("/reaccionar", name="reaccionar")
@@ -46,7 +47,7 @@ class ReaccionarController extends AbstractController
             $reacRepo->actualizarContenidoReaccion($this->getUser(),$post,$reacc);
         }
 
-        return $this->redirectToRoute('main');
+        return new Response();
 
     }
 }

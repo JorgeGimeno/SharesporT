@@ -19,6 +19,7 @@
             <section  class="main_post col-md-7 gedf-main">
                  <div id='new_post'>{# cargara por ajax el new_post #}</div>
                  <div id='post_filter'>{# cargara por ajax el filter_post #}</div>
+                 <div id='comentarios'>{# cargara por ajax el comentarios #}</div>
                  <div id='post_list'>{# cargara por ajax el post_list #}</div>
                  
             </section>
@@ -42,6 +43,21 @@
                     $('#post_list').html(htmlRecibido);
                 }
             });            
+        },
+        mostrarContenedorComentario:function(id_padre){
+            $.ajax({ url: "/new_comment/" + id_padre,
+                success: function(htmlRecibido){
+                $('#comentarios').append(htmlRecibido);
+                }
+            });
+        },
+        agregarComentario:function(id_padre){
+            console.log(id_padre);
+            $.ajax({ url: "/new_comment/" + id_padre,
+                success: function(htmlRecibido){
+                $('#comentarios').html(htmlRecibido);
+                }
+            });
         },
         //genera un listado de post sin ningun filtro
         quitarFiltroPosts:function(){
@@ -68,8 +84,24 @@
         },
 
         //
-        refrescarPostOnReaccionar:function(){
-            
+        refrescarPostOnReaccionar:function(post_id, reaccion, bandera, deporte, ciudad, currentPage){
+            $.ajax({ url: "/reaccionar/cambiarReaccion/" + post_id + "/" + reaccion,
+                success: function(){
+                    if(bandera){
+                        $.ajax({ url: "/postsFiltered/" + deporte + "/" + ciudad + "/" + currentPage,
+                            success: function(htmlRecibido){
+                                $('#post_list').html(htmlRecibido);
+                            }
+                        });  
+                    } else {
+                        $.ajax({ url: "/listadoPost/" + currentPage,
+                            success: function(htmlRecibido){
+                                $('#post_list').html(htmlRecibido);
+                            }
+                        });     
+                    }
+                }
+            });
         }
     }
 

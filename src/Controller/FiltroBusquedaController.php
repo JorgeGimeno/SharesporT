@@ -39,6 +39,8 @@ class FiltroBusquedaController extends AbstractController
         $bandera = true;
         $maxPages;
 
+        $ciudadPaginado = '"' . $ciudad . '"';
+
         $limit = 3;
         $postResult;
         $postQueryCompleta;
@@ -76,9 +78,10 @@ class FiltroBusquedaController extends AbstractController
                 'thisPage' => $currentPage,
                 'all_items' => $postQueryCompleta,
                 'reacciones' => $tablaReacciones,
-                'ciudad' => $ciudad,
+                'ciudad' => $ciudadPaginado,
                 'deporte' => $deporte,
                 'bandera' => $bandera,
+                'currentPage' => $currentPage,
             ) );
         }
 }
