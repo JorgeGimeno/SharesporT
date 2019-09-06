@@ -68,6 +68,8 @@ class StPostsRepository extends ServiceEntityRepository
     public function postsOrdenadosPorFecha($currentPage = 1, $limit = 3)
     {
         $query = $this->createQueryBuilder('p')
+            ->andWhere('p.idPostPadre = :id')
+            ->setParameter('id',-1)
             ->orderBy('p.fechaHora', 'DESC') 
             ->getQuery()
         ;
@@ -99,6 +101,8 @@ class StPostsRepository extends ServiceEntityRepository
     {
         $query =  $this->createQueryBuilder('s')
             ->andWhere('s.deporte = :id_d')
+            ->andWhere('s.idPostPadre = :id')
+            ->setParameter('id',-1)
             ->setParameter('id_d',$id_deporte)
             ->orderBy('s.fechaHora', 'DESC')
             ->getQuery()
@@ -112,11 +116,13 @@ class StPostsRepository extends ServiceEntityRepository
      public function postsCiudad(string $ciudad, int $numeroPosts, $currentPage = 1, $limit = 3)
      {
          $query = $this->createQueryBuilder('s')
-             ->andWhere('u.ciudad = :ciudad')
-             ->setParameter('ciudad',$ciudad)
-             ->join('s.usuario', 'u')
-             ->orderBy('s.fechaHora', 'DESC')
-             ->getQuery()
+            ->andWhere('u.ciudad = :ciudad')
+            ->andWhere('s.idPostPadre = :id')
+            ->setParameter('id',-1)
+            ->setParameter('ciudad',$ciudad)
+            ->join('s.usuario', 'u')
+            ->orderBy('s.fechaHora', 'DESC')
+            ->getQuery()
          ;
 
          $paginator = $this->paginarLista($query, $currentPage, $limit);
@@ -128,13 +134,15 @@ class StPostsRepository extends ServiceEntityRepository
      public function postsCiudadDeporte(string $ciudad, int $id_deporte, int $numeroPosts, $currentPage = 1, $limit = 3)
      {
         $query = $this->createQueryBuilder('s')
-             ->andWhere('u.ciudad = :ciudad')
-             ->andWhere('s.deporte = :id_d')
-             ->setParameter('ciudad',$ciudad)
-             ->setParameter('id_d', $id_deporte)
-             ->join('s.usuario', 'u')
-             ->orderBy('s.fechaHora', 'DESC')
-             ->getQuery()
+            ->andWhere('u.ciudad = :ciudad')
+            ->andWhere('s.deporte = :id_d')
+            ->andWhere('s.idPostPadre = :id')
+            ->setParameter('id',-1)
+            ->setParameter('ciudad',$ciudad)
+            ->setParameter('id_d', $id_deporte)
+            ->join('s.usuario', 'u')
+            ->orderBy('s.fechaHora', 'DESC')
+            ->getQuery()
          ;
 
         $paginator = $this->paginarLista($query, $currentPage, $limit);
@@ -147,6 +155,8 @@ class StPostsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('s')
         ->andWhere('s.idUsuario = :id_u')
+        ->andWhere('p.idPostPadre = :id')
+        ->setParameter('id',-1)
         ->setParameter('id_u',$id_usuario)
         ->orderBy('s.fechaHora', 'DESC')
         ->setMaxResults($numeroPosts)

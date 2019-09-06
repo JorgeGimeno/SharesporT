@@ -42,10 +42,11 @@
             <div class="row justify-content-between align-items-center">
                 <div class="col-7 pl-4">
                     <ul class="list-group reacciones">
-                        <li class="list-group-item"><a onclick="ns.postCargarPagina(1)" href="/reaccionar/cambiarReaccion/{{p.id}}/FLIPADO" class="card-link" title="Te lo has flipado"><i class="fa fa-rocket text-success"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['FLIPADO']}})</sup></a></li>
-                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/LIKE" class="card-link" title="Mola"><i class="fa fa-trophy text-warning"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['LIKE']}})</sup></a></li>
-                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DISLIKE" class="card-link" title="No me gusta"><i class="fa fa-frown-o text-danger"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DISLIKE']}})</sup></a></li>
-                        <li class="list-group-item"><a href="/reaccionar/cambiarReaccion/{{p.id}}/DESCANSA" class="card-link" title="Descansa"><i class="fa fa-bed"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DESCANSA']}})</sup></a></li>
+                        <li class="list-group-item"><a onclick="ns.refrescarPostOnReaccionar({{p.id}}, 'FLIPADO', {{bandera}}, {{deporte}}, {{ciudad}}, {{currentPage}})" class="card-link" title="Te lo has flipado"><i class="fa fa-rocket text-success"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['FLIPADO']}})</sup></a></li>
+                        <li class="list-group-item"><a onclick="ns.refrescarPostOnReaccionar({{p.id}}, 'LIKE', {{bandera}}, {{deporte}}, {{ciudad}}, {{currentPage}})" class="card-link" title="Mola"><i class="fa fa-trophy text-warning"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['LIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a onclick="ns.refrescarPostOnReaccionar({{p.id}}, 'DISLIKE', {{bandera}}, {{deporte}}, {{ciudad}}, {{currentPage}})" class="card-link" title="No me gusta"><i class="fa fa-frown-o text-danger"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DISLIKE']}})</sup></a></li>
+                        <li class="list-group-item"><a onclick="ns.refrescarPostOnReaccionar({{p.id}}, 'DESCANSA', {{bandera}}, {{deporte}}, {{ciudad}}, {{currentPage}})" class="card-link" title="Descansa"><i class="fa fa-bed"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DESCANSA']}})</sup></a></li>
+                        <li class="list-group-item"><a onclick="ns.mostrarContenedorComentario({{p.id}})" class="card-link" title="Responder"><i class="fa fa-comments-o"></i></a></li>
                     </ul>
                 </div>
                 <div class="col-5">
@@ -69,25 +70,37 @@
 {% else %} No hay registros {% endfor %}
 <div class="my-3">
     {% if maxPages > 1 %}
-    <ul class="d-flex justify-content-center pl-0">
+    <ul class="d-flex justify-content-center pl-0"> 
         {%if thisPage > 1 %}
         <li class="d-inline mr-3">
             {# <a href="{{ path('main', {currentPage: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a> #}
-            <button class="btn btn-info btn-sm" onclick='ns.postCargarPagina({{ thisPage-1 < 1 ? 1 : thisPage-1 }})' href="#">Ant</button>
+            {% if bandera %}
+                <button class="btn btn-info btn-sm" onclick='ns.cargarPostsFiltro({{deporte}}, {{ciudad}}, {{ thisPage-1 < 1 ? 1 : thisPage-1 }})' href="#">Ant</button>
+            {% else %}
+                <button class="btn btn-info btn-sm" onclick='ns.postCargarPagina({{ thisPage-1 < 1 ? 1 : thisPage-1 }})' href="#">Ant</button>
+            {% endif %}
         </li>
         {% endif %} {# Render each page number #} {% for i in 1..maxPages %}
         <li class="d-inline mr-3">
             {# <a href="{{ path('main', {currentPage: i}) }}">{{ i }}</a> #}
-            <button class="btn btn-outline-info btn-sm" onclick='ns.postCargarPagina({{ i }})' href="#">{{ i }}</buttton>
-            </li>
+            {% if bandera %}
+                <button class="btn btn-outline-info btn-sm" onclick='ns.cargarPostsFiltro({{deporte}}, {{ciudad}}, {{ i }})' href="#">{{ i }}</button>
+            {% else %}
+                <button class="btn btn-outline-info btn-sm" onclick='ns.postCargarPagina({{ i }})' href="#">{{ i }}</buttton>
+            {% endif %}
+        </li>
         {% endfor %}
 
         {# `»` arrow #}
         {%if thisPage < maxPages %}
             <li class="d-inline">
+                {% if bandera %}
+                    <button class="btn btn-info btn-sm" onclick='ns.cargarPostsFiltro({{deporte}}, {{ciudad}}, {{ thisPage+1 <= maxPages ? thisPage+1 : thisPage }})' href="#">Ant</button>
+                {% else %}
                 {# <a href="{{ path('main', {currentPage: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a> #}
-                <button class="btn btn-info btn-sm" onclick='ns.postCargarPagina({{ thisPage+1 <= maxPages ? thisPage+1 : thisPage }})' href="#">Sig</button>
-        </li>
+                    <button class="btn btn-info btn-sm" onclick='ns.postCargarPagina({{ thisPage+1 <= maxPages ? thisPage+1 : thisPage }})' href="#">Sig</button>
+                {% endif %}
+            </li>
         {% endif %}
     </ul>
     {% endif %}
