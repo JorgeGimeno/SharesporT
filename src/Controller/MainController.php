@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\StPosts;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -18,7 +19,8 @@ class MainController extends AbstractController
         
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
-            'currentPage' => $currentPage
+            'currentPage' => $currentPage,
+            'listaComentarios' => $listaComentarios
         ]);
     }
 }

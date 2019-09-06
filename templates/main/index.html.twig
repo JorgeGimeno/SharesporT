@@ -15,12 +15,12 @@
         <div class="row w-90 mx-auto">
             <section id='user_panel' class="user_panel col-md-3">
                  {# cargara por ajax el user_panel #}
-             </section>
+            </section>
             <section  class="main_post col-md-7 gedf-main">
-                 <div id='new_post'>{# cargara por ajax el new_post #}</div>
-                 <div id='post_filter'>{# cargara por ajax el filter_post #}</div>
-                 <div id='comentarios'>{# cargara por ajax el comentarios #}</div>
-                 <div id='post_list'>{# cargara por ajax el post_list #}</div>
+                <div id='new_post'>{# cargara por ajax el new_post #}</div>
+                <div id='post_filter'>{# cargara por ajax el filter_post #}</div>
+                <div id='comentarios'>{# cargara por ajax el comentarios #}</div>
+                <div id='post_list'>{# cargara por ajax el post_list #}</div>
                  
             </section>
             <section class="publicidad col-md-2">
@@ -34,6 +34,9 @@
 
 {% block javascripts %}
 <script>
+
+    var contenedorComentarios = $('#popper_comentarios');
+    contenedorComentarios.hide();
    
     var ns = {
         //carga el listado de post ordenado por fecha con paginado

@@ -213,7 +213,7 @@ class StPostsRepository extends ServiceEntityRepository
     public function comentariosDeUnPost(int $id_post)
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.id_post_padre = :val')
+            ->andWhere('s.idPostPadre = :val')
             ->setParameter('val', $id_post)
             ->orderBy('s.fechaHora', 'DESC')
             ->setMaxResults(100)
