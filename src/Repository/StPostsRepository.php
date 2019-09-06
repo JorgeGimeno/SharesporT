@@ -197,4 +197,15 @@ class StPostsRepository extends ServiceEntityRepository
 
         
     }
+
+    public function numeroDeComentariosDeUnPost(StPosts $post)
+    {
+        return $this->createQueryBuilder('s')
+        ->select('count(s.id)')
+        ->andWhere('s.id_post:_padre = :id_p')
+        ->setParameter('id_p',$post->getIdPostPadre())
+        ->getQuery()
+        ->getSingleScalarResult()
+    ;
+    }
 }
