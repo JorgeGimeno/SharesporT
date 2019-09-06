@@ -58,10 +58,13 @@ class ShowController extends AbstractController
         } 
         $tablaMensajes = [];
         $repoPost =$em->getRepository(StPosts::class);
+        $tablafotos = [];
         foreach ($postResult as $p){
             array_push($tablaMensajes, $repoPost->numeroDeComentariosDeUnPost($p));
-        } 
-
+            $image = base64_encode(stream_get_contents($p->getUsuario()->getFoto()));
+            array_push($tablafotos, $image );
+       
+        }
         return $this->render('st_posts/show.html.twig', array(
                 'arrayPost' => $postResult, 
                 'maxPages'=>$maxPages,
@@ -73,6 +76,7 @@ class ShowController extends AbstractController
                 'ciudad' => $ciudad,
                 'currentPage' => $currentPage,
                 'NumerosComentarios' => $tablaMensajes,
+                'tablafotos' => $tablafotos,
             ) );
     }
 

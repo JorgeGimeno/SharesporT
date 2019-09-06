@@ -74,7 +74,7 @@ class StUsuariosController extends AbstractController
 
             return $this->redirectToRoute('st_usuarios_index');
         }
-
+       
         return $this->render('st_usuarios/edit.html.twig', [
             'st_usuario' => $stUsuario,
             'form' => $form->createView(),

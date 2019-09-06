@@ -41,7 +41,9 @@ class EditUserDataType extends AbstractType
             ->add('nombre')
             ->add('apellidos')
             ->add('ciudad')
-            /* ->add('foto', FileType::class) */
+            ->add('foto', FileType::class, [
+                'mapped' => false,
+            ])
             ->add('fechaNac', BirthdayType::class, [
                 'format' => 'ddMMyyyy',
                 'placeholder' => [

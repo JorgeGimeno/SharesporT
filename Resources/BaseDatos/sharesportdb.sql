@@ -47,7 +47,7 @@ CREATE TABLE `st_posts` (
   `id_deporte` int(11) NOT NULL,
   `id_post_padre` int(11) DEFAULT -1,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 /*Data for the table `st_posts` */
 
@@ -61,7 +61,13 @@ insert  into `st_posts`(`id`,`fecha_hora`,`contenido`,`id_usuario`,`id_deporte`,
 (7,'2019-08-29 09:55:14','Vamos a correr 100km!!!!!!!!!!!!!!!!!!!',255,1,-1),
 (8,'2019-08-29 10:04:30','El record nadando lo tengo en 3km y medio en hora y 10 B)',256,3,-1),
 (9,'2019-09-04 11:57:52','No he echo surf en mi vida.... pero parece divertido...',255,5,-1),
-(10,'2019-09-05 12:23:25','ZOY EL JULI Y SOY UN MAQUINA CANIHOS',260,4,-1);
+(10,'2019-09-05 12:23:25','ZOY EL JULI Y SOY UN MAQUINA CANIHOS',260,4,-1),
+(11,'2019-09-06 09:51:59','Qué crack eres',255,3,8),
+(12,'2019-09-05 09:53:19','Ayer volví a nadar, 40 minutitos para 2km, no está nada mal :P',256,3,-1),
+(13,'2019-09-06 09:54:06','Venga ya, que eso es mucho, maña.',260,3,12),
+(14,'2019-09-06 09:55:00','Me estabas adelantando a toda leche, ¿cómo ibas así sin aletas?!?!?!',201,3,12),
+(15,'2019-09-06 09:56:26','¿Vas a volver hoy? Podemos quedar y ves cómo te gano.',202,3,12),
+(16,'2019-09-06 09:57:13','¡¡¡Jajajajaja! Ya te gustaría a ti, vente y me ves delante.',256,3,12);
 
 /*Table structure for table `st_reacciones` */
 
@@ -73,7 +79,7 @@ CREATE TABLE `st_reacciones` (
   `id_post` int(11) DEFAULT NULL,
   `reaccion` varchar(250) COLLATE utf8_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `st_reacciones` */
 
@@ -83,7 +89,12 @@ insert  into `st_reacciones`(`Id`,`id_usuario`,`id_post`,`reaccion`) values
 (3,256,3,'FLIPADO'),
 (4,254,8,'DISLIKE'),
 (5,252,7,'DESCANSA'),
-(9,256,7,'LIKE');
+(9,256,7,'LIKE'),
+(10,201,7,'LIKE'),
+(11,202,7,'DISLIKE'),
+(12,203,7,'DISLIKE'),
+(13,204,8,'FLIPADO'),
+(14,204,7,'DESCANSA');
 
 /*Table structure for table `st_usuarios` */
 
