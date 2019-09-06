@@ -61,7 +61,7 @@ insert  into `st_posts`(`id`,`fecha_hora`,`contenido`,`id_usuario`,`id_deporte`,
 (7,'2019-08-29 09:55:14','Vamos a correr 100km!!!!!!!!!!!!!!!!!!!',255,1,-1),
 (8,'2019-08-29 10:04:30','El record nadando lo tengo en 3km y medio en hora y 10 B)',256,3,-1),
 (9,'2019-09-04 11:57:52','No he echo surf en mi vida.... pero parece divertido...',255,5,-1),
-(10,'2019-09-05 12:23:25','ZOY EL JULI Y SOY UN MAQUINA CANIHOS',257,4,-1);
+(10,'2019-09-05 12:23:25','ZOY EL JULI Y SOY UN MAQUINA CANIHOS',260,4,-1);
 
 /*Table structure for table `st_reacciones` */
 
