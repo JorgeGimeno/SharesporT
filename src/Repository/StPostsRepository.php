@@ -202,8 +202,8 @@ class StPostsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('s')
         ->select('count(s.id)')
-        ->andWhere('s.id_post:_padre = :id_p')
-        ->setParameter('id_p',$post->getIdPostPadre())
+        ->andWhere('s.idPostPadre = :id_p')
+        ->setParameter('id_p',$post->getId())
         ->getQuery()
         ->getSingleScalarResult()
     ;

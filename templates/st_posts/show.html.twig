@@ -46,7 +46,7 @@
                         <li class="list-group-item"><a onclick="ns.refrescarPostOnReaccionar({{p.id}}, 'LIKE', {{bandera}}, {{deporte}}, {{ciudad}}, {{currentPage}})" class="card-link" title="Mola"><i class="fa fa-trophy text-warning"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['LIKE']}})</sup></a></li>
                         <li class="list-group-item"><a onclick="ns.refrescarPostOnReaccionar({{p.id}}, 'DISLIKE', {{bandera}}, {{deporte}}, {{ciudad}}, {{currentPage}})" class="card-link" title="No me gusta"><i class="fa fa-frown-o text-danger"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DISLIKE']}})</sup></a></li>
                         <li class="list-group-item"><a onclick="ns.refrescarPostOnReaccionar({{p.id}}, 'DESCANSA', {{bandera}}, {{deporte}}, {{ciudad}}, {{currentPage}})" class="card-link" title="Descansa"><i class="fa fa-bed"></i><sup class="badge badge-pill"> ({{reacciones[loop.index0]['DESCANSA']}})</sup></a></li>
-                        <li class="list-group-item"><a onclick="ns.mostrarContenedorComentario({{p.id}})" class="card-link" title="Responder"><i class="fa fa-comments-o"></i></a></li>
+                        <li class="list-group-item"><a onclick="ns.mostrarContenedorComentario({{p.id}})" class="card-link" title="Responder"><i class="fa fa-comments-o"></i></a>({{NumerosComentarios[loop.index0]}})</li>
                     </ul>
                 </div>
                 <div class="col-5">
