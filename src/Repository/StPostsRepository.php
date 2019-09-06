@@ -208,4 +208,17 @@ class StPostsRepository extends ServiceEntityRepository
         ->getSingleScalarResult()
     ;
     }
+
+    //Devuelve el array de post que descienden de $id_post (comentarios a ese post)
+    public function comentariosDeUnPost(int $id_post)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id_post_padre = :val')
+            ->setParameter('val', $id_post)
+            ->orderBy('s.fechaHora', 'DESC')
+            ->setMaxResults(100)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
