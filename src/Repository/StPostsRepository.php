@@ -202,10 +202,23 @@ class StPostsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('s')
         ->select('count(s.id)')
-        ->andWhere('s.id_post:_padre = :id_p')
-        ->setParameter('id_p',$post->getIdPostPadre())
+        ->andWhere('s.idPostPadre = :id_p')
+        ->setParameter('id_p',$post->getId())
         ->getQuery()
         ->getSingleScalarResult()
     ;
+    }
+
+    //Devuelve el array de post que descienden de $id_post (comentarios a ese post)
+    public function comentariosDeUnPost(int $id_post)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.id_post_padre = :val')
+            ->setParameter('val', $id_post)
+            ->orderBy('s.fechaHora', 'DESC')
+            ->setMaxResults(100)
+            ->getQuery()
+            ->getResult()
+        ;
     }
 }

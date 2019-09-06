@@ -56,7 +56,11 @@ class ShowController extends AbstractController
         foreach ($postResult as $p){
             array_push($tablaReacciones, $p->cuentaReacciones());
         } 
-    
+        $tablaMensajes = [];
+        $repoPost =$em->getRepository(StPosts::class);
+        foreach ($postResult as $p){
+            array_push($tablaMensajes, $repoPost->numeroDeComentariosDeUnPost($p));
+        } 
 
         return $this->render('st_posts/show.html.twig', array(
                 'arrayPost' => $postResult, 
@@ -68,6 +72,7 @@ class ShowController extends AbstractController
                 'deporte' => $deporte,
                 'ciudad' => $ciudad,
                 'currentPage' => $currentPage,
+                'NumerosComentarios' => $tablaMensajes,
             ) );
     }
 
